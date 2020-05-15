@@ -25,6 +25,10 @@ public class ComentarioActivity extends AppCompatActivity {
     FirebaseFirestore db;
     MuestraProfesor profe;
 
+
+    //Antony se la come
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
