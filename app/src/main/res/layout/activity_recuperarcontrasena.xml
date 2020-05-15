@@ -25,38 +25,96 @@
         android:id="@+id/txtvInstrucciones"
         android:layout_width="266dp"
         android:layout_height="57dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="12dp"
         android:text="@string/recuperaciónStringTextViewInstrucciones"
         android:textColor="#575555"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintHorizontal_bias="0.213"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtvNombre" />
 
     <EditText
-        android:id="@+id/edtUsuario"
+        android:id="@+id/edtRecuperarUsuario"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="88dp"
         android:hint="@string/loginStringHintUsuario"
         android:inputType="textEmailAddress"
         android:textColor="@color/colorPrimaryText"
         android:textColorHint="@color/colorPrimaryText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtvNombre" />
 
     <Button
-        android:id="@+id/btnEnviarContraseña"
+        android:id="@+id/btnVerificar"
         android:layout_width="128dp"
         android:layout_height="48dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="264dp"
         android:background="@drawable/roundedbutton"
         android:text="@string/comentarioStringButtonEnviar"
         android:textColor="@color/colorPrimaryText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.901"
+        app:layout_constraintHorizontal_bias="0.893"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/txtvPregunta"
+        android:layout_width="185dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="20dp"
+        android:text="pregunta"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="25sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtRecuperarUsuario" />
+
+    <EditText
+        android:id="@+id/edtRespuestaContraseña"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="@string/signUpStringHintRespuesta"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorPrimaryText"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvPregunta" />
+
+    <EditText
+        android:id="@+id/edtNuevaContraseña"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:hint="@string/recuperaciónStringTextViewNueva"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorPrimaryText"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtRespuestaContraseña" />
+
+    <Button
+        android:id="@+id/btnNuevaContraseña"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/roundedbutton"
+        android:text="@string/recuperaciónStringButtonCambiar"
+        android:textColor="@color/colorPrimaryText"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNuevaContraseña" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

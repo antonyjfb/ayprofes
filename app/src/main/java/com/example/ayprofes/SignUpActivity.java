@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,7 +27,7 @@ public class SignUpActivity extends AppCompatActivity {
     EditText edtUsuario;
     EditText edtContraseña;
     EditText edtContraseña2;
-    EditText edtPregunta;
+    Spinner spnPreguntas;
     EditText edtRespuesta;
 
     //Cadenas para obtener la informacion del usuario
@@ -40,6 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
     boolean llaveContraseña2;
     boolean llaveRespuesta;
     boolean llaveNombre2;
+    boolean llavePregunta;
 
     FirebaseFirestore db;
 
@@ -47,14 +51,31 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup); //activity main
+
         //Relacionamos los elementos de java con html
         edtUsuario=findViewById(R.id.edtUsuario);
         edtContraseña=findViewById(R.id.edtContraseña);
         edtContraseña2=findViewById(R.id.edtContraseña2);
-        edtPregunta=findViewById(R.id.edtPregunta);
         edtRespuesta=findViewById(R.id.edtRespuesta);
-        btnRegistrar = findViewById(R.id.btnRegistrar);
-        //Instancia de la base de datos
+        btnRegistrar =findViewById(R.id.btnRegistrar);
+        spnPreguntas =findViewById(R.id.spnPreguntas);
+
+        //Adaptador del spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.spnPreguntas,android.R.layout.simple_spinner_item);
+        spnPreguntas.setAdapter(adapter);
+
+        //Obtener el valor del spinner
+        spnPreguntas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                pregunta = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         //Evento del boton
@@ -62,19 +83,20 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                usuario=edtUsuario.getText().toString();
-                contraseña=edtContraseña.getText().toString();
-                contraseña2=edtContraseña2.getText().toString();
-                pregunta=edtPregunta.getText().toString();
-                respuesta=edtRespuesta.getText().toString();
+                usuario = edtUsuario.getText().toString();
+                contraseña = edtContraseña.getText().toString();
+                contraseña2 = edtContraseña2.getText().toString();
+                respuesta = edtRespuesta.getText().toString();
 
-                llaveNombre=false;
-                llaveNombre2=false;
-                llaveContraseña=false;
-                llaveContraseña2=false;
-                llaveRespuesta=false;
+                llaveNombre = false;
+                llaveNombre2 = false;
+                llaveContraseña = false;
+                llaveContraseña2 = false;
+                llaveRespuesta = false;
+                llavePregunta =false;
+
                 db = FirebaseFirestore.getInstance();
-                String id=edtUsuario.getText().toString();
+                String id = edtUsuario.getText().toString();
 
                 try {
                     db.collection("Usuarios").document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -83,9 +105,10 @@ public class SignUpActivity extends AppCompatActivity {
                             String usuarioAux = documentSnapshot.getString("nombre");
                             if (usuario.equalsIgnoreCase(usuarioAux)) {
                                 Toast.makeText(getApplicationContext(), "Ese nombre de usuario ya existe", Toast.LENGTH_SHORT).show();
-                            } else
-                                {
-                                llaveNombre2=true;
+                            }
+                            else {
+
+                                llaveNombre2 = true;
 
                                 //Validacion del nombre de usuario
                                 if (usuario.length() < 9) {
@@ -97,17 +120,22 @@ public class SignUpActivity extends AppCompatActivity {
                                 //Validacion para el formato de la contraseña
                                 if (contraseña.length() < 9) {
                                     Toast.makeText(getApplicationContext(), "La contraseña debe tener al menos 10 caracteres", Toast.LENGTH_SHORT).show();
-
                                 } else {
                                     llaveContraseña = true;
                                 }
-
 
                                 //Validacion para confirmar contraseña
                                 if (contraseña.equals(contraseña2)) {
                                     llaveContraseña2 = true;
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                                }
+
+                                //Validar que selecciono una pregunta
+                                if(pregunta.equals("Seleccione")) {
+                                    Toast.makeText(getApplicationContext(), "Selecione una pregunta", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    llavePregunta=true;
                                 }
 
                                 //Validar que respondio su pregunta
@@ -117,17 +145,17 @@ public class SignUpActivity extends AppCompatActivity {
                                     llaveRespuesta = true;
                                 }
 
-                                if (llaveNombre == true && llaveContraseña == true && llaveRespuesta == true && llaveContraseña2 == true && llaveNombre2==true) {
+                                if (llaveNombre == true && llaveContraseña == true && llaveRespuesta == true && llaveContraseña2 == true && llaveNombre2 == true && llavePregunta ==true) {
                                     Usuario miUsuario = new Usuario(usuario, contraseña, pregunta, respuesta);
                                     Log.d("Prueba", "Entro en el evento");
                                     db.collection("Usuarios").document(usuario).set(miUsuario).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
+
                                         public void onSuccess(Void aVoid) {
 
                                             edtUsuario.setText("");
                                             edtContraseña.setText("");
                                             edtContraseña2.setText("");
-                                            edtPregunta.setText("");
                                             edtRespuesta.setText("");
                                             Toast.makeText(getApplicationContext(), "Se agregaron los datos correctamente", Toast.LENGTH_SHORT).show();
 
@@ -140,8 +168,7 @@ public class SignUpActivity extends AppCompatActivity {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
                                             Log.d("Prueba", "Entro en la base de datos");
-                                            Toast.makeText(getApplicationContext(), "Hubo un problema con la conexion, vuelve a intentarlo", Toast.LENGTH_SHORT).show();
-                                        }
+                                            Toast.makeText(getApplicationContext(), "Hubo un problema con la conexion, vuelve a intentarlo", Toast.LENGTH_SHORT).show(); }
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
@@ -160,10 +187,11 @@ public class SignUpActivity extends AppCompatActivity {
 
 
                 //Intent para registrar
-               // Intent in = new Intent(getApplicationContext(),BuscarActivity.class);
-               // startActivity(in);
+                // Intent in = new Intent(getApplicationContext(),BuscarActivity.class);
+                // startActivity(in);
             }
         });
     }
 }
+
 

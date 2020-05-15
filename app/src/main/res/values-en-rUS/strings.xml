@@ -22,4 +22,7 @@
     <string name="signUpStringHintRespuesta">Answer</string>
     <string name="singUpStringHintContraseña2">Confirm Password</string>
     <string name="signUpStringButtonRegistrar">Sign Up</string>
+    <string name="signUpStringHintPregunta">Question</string>
+    <string name="recuperaciónStringButtonCambiar">Change</string>
+    <string name="recuperaciónStringTextViewNueva">New Password</string>
 </resources>

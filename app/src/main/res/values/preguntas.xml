@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spnPreguntas">
+        <item>Seleccione</item>
+        <item>¿Cómo se llamo tu primera mascota?</item>
+        <item>¿Cómo se llama tu profesor de programación?</item>
+        <item>¿Cuál es tu equipo favorito?</item>
+        <item>¿Cuál es tu banda favorita?</item>
+        <item>¿Qué color de Yoshi serias?</item>
+    </string-array>
+
+</resources>

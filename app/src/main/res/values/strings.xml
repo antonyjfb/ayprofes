@@ -5,6 +5,7 @@
     <string name="loginStringHintUsuario">Usuario</string>
     <string name="loginStringHintContraseña">Contraseña</string>
     <string name="signUpStringHintRespuesta">Respuesta</string>
+    <string name="signUpStringHintPregunta">Pregunta</string>
     <string name="singUpStringHintContraseña2">Confirmar Contraseña</string>
     <string name="signUpStringButtonRegistrar">Registrar</string>
     <string name="loginStringHintTextViewOlvide">Olvide mi contraseña</string>
@@ -21,5 +22,7 @@
     <string name="comentarioStringButtonEnviar">Enviar</string>
     <string name="comentarioStringButtonAñadir">Añadir comentario</string>
     <string name="recuperaciónStringTextViewInstrucciones">Escribe tu nombre de usuario y se enviara la contraseña a tu correo</string>
+    <string name="recuperaciónStringButtonCambiar">Cambiar</string>
+    <string name="recuperaciónStringTextViewNueva">Nueva Contraseña</string>
 
 </resources>
