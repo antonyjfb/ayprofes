@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/edtRespuesta"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:hint="@string/signUpStringHintRespuesta"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorPrimaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtPregunta" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="185dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="68dp"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtUsuario"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/loginStringHintUsuario"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorPrimaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/edtPregunta"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/signUpStringHintRespuesta"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorPrimaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtContraseña2" />
+
+    <EditText
+        android:id="@+id/edtContraseña"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:hint="@string/loginStringHintContraseña"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorPrimaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtUsuario" />
+
+    <EditText
+        android:id="@+id/edtContraseña2"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:hint="@string/singUpStringHintContraseña2"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorPrimaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtContraseña" />
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="428dp"
+        android:background="@drawable/roundedbutton"
+        android:text="@string/signUpStringButtonRegistrar"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

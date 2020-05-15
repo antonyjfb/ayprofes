@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".MainActivity"
+    tools:ignore="MissingDefaultResource">
+
+    <TextView
+        android:id="@+id/txtvNombre"
+        android:layout_width="185dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="56dp"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/txtvInstrucciones"
+        android:layout_width="266dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/recuperaciónStringTextViewInstrucciones"
+        android:textColor="#575555"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvNombre" />
+
+    <EditText
+        android:id="@+id/edtUsuario"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:hint="@string/loginStringHintUsuario"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorPrimaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvNombre" />
+
+    <Button
+        android:id="@+id/btnEnviarContraseña"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="284dp"
+        android:background="@drawable/roundedbutton"
+        android:text="@string/comentarioStringButtonEnviar"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.901"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

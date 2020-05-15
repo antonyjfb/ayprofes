@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">AyProfes!</string>
+    <string name="mainStringButtonBuscar">Buscar</string>
+    <string name="mainStringButtonLogin">Iniciar Sesion</string>
+    <string name="loginStringHintUsuario">Usuario</string>
+    <string name="loginStringHintContraseña">Contraseña</string>
+    <string name="signUpStringHintRespuesta">Respuesta</string>
+    <string name="singUpStringHintContraseña2">Confirmar Contraseña</string>
+    <string name="signUpStringButtonRegistrar">Registrar</string>
+    <string name="loginStringHintTextViewOlvide">Olvide mi contraseña</string>
+    <string name="loginStringButtonEntrar">Entrar</string>
+    <string name="loginStringButtonCrear">Crear Cuenta</string>
+    <string name="comentarioStringTextViewNombre">Nombre del profesor</string>
+    <string name="comentarioStringTextViewFacilidad">Facilidad</string>
+    <string name="comentarioStringTextViewClaridad">Claridad</string>
+    <string name="comentarioStringTextViewAyuda">Ayuda</string>
+    <string name="comentarioStringTextViewCarga">Carga de trabajo</string>
+    <string name="comentarioStringTextViewRecomendación">Recomendación</string>
+    <string name="comentarioStringTextViewComentario">Comentario:</string>
+    <string name="comentarioStringEditTextComentario">Escribe un comentario...</string>
+    <string name="comentarioStringButtonEnviar">Enviar</string>
+    <string name="comentarioStringButtonAñadir">Añadir comentario</string>
+    <string name="recuperaciónStringTextViewInstrucciones">Escribe tu nombre de usuario y se enviara la contraseña a tu correo</string>
+
+</resources>

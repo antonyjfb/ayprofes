@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnMainLogin"
+        android:layout_width="138dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="364dp"
+        android:background="@drawable/roundedbutton"
+        android:text="@string/mainStringButtonLogin"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnMainBuscar"
+        android:layout_width="229dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="256dp"
+        android:background="@drawable/roundedbutton"
+        android:text="@string/mainStringButtonBuscar"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtvNombre"
+        android:layout_width="185dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="145dp"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

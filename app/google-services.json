@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "517788960496",
+    "firebase_url": "https://ayprofes-2df5a.firebaseio.com",
+    "project_id": "ayprofes-2df5a",
+    "storage_bucket": "ayprofes-2df5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517788960496:android:787ffdc98b11bb2d582435",
+        "android_client_info": {
+          "package_name": "com.example.ayprofes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "517788960496-p2g105kncl1c3q93bdl07t9a04t4vc1f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ayprofes",
+            "certificate_hash": "508470345deefba20799d5ee4c20649bbf9227d2"
+          }
+        },
+        {
+          "client_id": "517788960496-b9ko9q5ooittkotn55l5urdacf3evlls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANmjMSxNRVSLkTA1FkmtIVo36IWqFkXeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "517788960496-b9ko9q5ooittkotn55l5urdacf3evlls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

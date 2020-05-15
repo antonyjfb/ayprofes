@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource">
+
+    <TextView
+        android:id="@+id/txtvCarga"
+        android:layout_width="108dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/comentarioStringTextViewCarga"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvAyuda" />
+
+    <TextView
+        android:id="@+id/txtvRecomendacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/comentarioStringTextViewRecomendación"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvCarga" />
+
+    <TextView
+        android:id="@+id/txtvAyuda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/comentarioStringTextViewAyuda"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvClaridad" />
+
+    <TextView
+        android:id="@+id/txtvClaridad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/comentarioStringTextViewClaridad"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvFacilidad" />
+
+    <TextView
+        android:id="@+id/txtvNombre"
+        android:layout_width="185dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="68dp"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtvProfesor"
+        android:layout_width="321dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@string/comentarioStringTextViewNombre"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvNombre" />
+
+    <TextView
+        android:id="@+id/txtvFacilidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/comentarioStringTextViewFacilidad"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvProfesor" />
+
+    <Button
+        android:id="@+id/btnAñadir"
+        android:layout_width="241dp"
+        android:layout_height="41dp"
+        android:background="@drawable/roundedbutton"
+        android:text="@string/comentarioStringButtonAñadir"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

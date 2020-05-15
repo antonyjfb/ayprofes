@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AyProfes!</string>
+    <string name="mainStringButtonBuscar">Search</string>
+    <string name="mainStringButtonLogin">Log in</string>
+    <string name="loginStringHintUsuario">User Name</string>
+    <string name="loginStringHintContraseña">Password</string>
+    <string name="loginStringHintTextViewOlvide">" I forgot my password"</string>
+    <string name="loginStringButtonEntrar">Get in</string>
+    <string name="loginStringButtonCrear">Create Account</string>
+    <string name="comentarioStringTextViewNombre">Teacher\'s name</string>
+    <string name="comentarioStringTextViewFacilidad">Ease</string>
+    <string name="comentarioStringTextViewClaridad">Clarity</string>
+    <string name="comentarioStringTextViewAyuda">Aid</string>
+    <string name="comentarioStringTextViewCarga">Workload</string>
+    <string name="comentarioStringTextViewRecomendación">Recommendation</string>
+    <string name="comentarioStringTextViewComentario">Commentary:</string>
+    <string name="comentarioStringEditTextComentario">" Write comment..."</string>
+    <string name="comentarioStringButtonEnviar">Send</string>
+    <string name="comentarioStringButtonAñadir">Add comment</string>
+    <string name="recuperaciónStringTextViewInstrucciones">Enter your username and the password will be sent to your email</string>
+    <string name="signUpStringHintRespuesta">Answer</string>
+    <string name="singUpStringHintContraseña2">Confirm Password</string>
+    <string name="signUpStringButtonRegistrar">Sign Up</string>
+</resources>
