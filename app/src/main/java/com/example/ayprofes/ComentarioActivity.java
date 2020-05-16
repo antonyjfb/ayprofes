@@ -28,7 +28,7 @@ public class ComentarioActivity extends AppCompatActivity {
 
 
     //Antony se la come
-
+    //x2
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
