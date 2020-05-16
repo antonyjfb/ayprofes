@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,7 @@ public class ComentarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_comentario); //activity main
         final RatingBar facilidadRatingBar, claridadRatingBar, ayudaRatingBar, workloadRatingBar, recommendationRatingBar;
         final EditText comentarioBox;
+        TextView nombreDelProfesor=findViewById(R.id.txtvProfesor);
         comentarioBox = findViewById(R.id.edtComentario);
         facilidadRatingBar = findViewById(R.id.facilidadRatingBar);
         claridadRatingBar = findViewById(R.id.claridadRatingBar);
@@ -42,6 +44,9 @@ public class ComentarioActivity extends AppCompatActivity {
         workloadRatingBar = findViewById(R.id.workloadRatingBar);
         recommendationRatingBar = findViewById(R.id.recommendationRatingBar);
         Button submitButton = (Button) findViewById(R.id.btnEnviarComentario);
+        Bundle bundle = getIntent().getExtras();
+        final String nombreProfe = bundle.getString("nombreProfe");
+        nombreDelProfesor.setText(nombreProfe);
         // perform click event on button
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +55,8 @@ public class ComentarioActivity extends AppCompatActivity {
                 db = FirebaseFirestore.getInstance();
                 profe = new MuestraProfesor(comentarioBox.getText().toString(),claridadRatingBar.getRating(),facilidadRatingBar.getRating(),ayudaRatingBar.getRating(),workloadRatingBar.getRating(),recommendationRatingBar.getRating());
                 Map<String, Object> filler = new HashMap<>();
-                String direccion = "Profesor3";
+                String direccion = nombreProfe;
+                //String direccion = "Profesor3";
                 filler.put("exists", true);
                 db.collection("Profesores").document(direccion)
                         .set(filler);

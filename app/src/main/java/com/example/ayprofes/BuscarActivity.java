@@ -39,7 +39,7 @@ public class BuscarActivity extends AppCompatActivity {
         profesores=new ArrayList<>();
         profesores.add(new MuestraProfesor("María del Pilar Corona Lira","Electrónica Básica","Calificación promedio: 9.5"));
         profesores.add(new MuestraProfesor("Jorge Armando Rodríguez Vera", "Temas Selectos de Programación", "Calificación promedio: 9.8"));
-        profesores.add(new MuestraProfesor("Francisco Cuenca Jimenez","Mecanismos", "Calificación promedio: 9"));
+        profesores.add(new MuestraProfesor("Francisco Cuenca","Mecanismos", "Calificación promedio: 9"));
         profesores.add(new MuestraProfesor("Alejandro César López Bolaños", "Introducción a la economía", "Calificación promedio: 8.7"));
         profesores.add(new MuestraProfesor("Armando Sánchez Guzmán","Ingeniería de Manufactura", "Calificación promedio: 8"));
         profesores.add(new MuestraProfesor("Álvaro Núñez Flores", "Modelado de sistemas físicos","Calificación promedio: 8.5"));

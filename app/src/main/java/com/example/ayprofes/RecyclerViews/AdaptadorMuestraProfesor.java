@@ -2,6 +2,7 @@ package com.example.ayprofes.RecyclerViews;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,8 @@ public class AdaptadorMuestraProfesor extends RecyclerView.Adapter<AdaptadorMues
             @Override
             public void onClick(View v) {
                 Intent in =new Intent(v.getContext(), ProfesorActivity.class);
+                Log.d("Transito", profesor.getNombre());
+                in.putExtra("nombreProfe", profesor.getNombre());
                 v.getContext().startActivity(in);
 
             }

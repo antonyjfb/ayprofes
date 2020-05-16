@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,12 +42,19 @@ public class ProfesorActivity extends AppCompatActivity {
         txtvNombre=findViewById(R.id.txtvNombre);
         txtvProfesor=findViewById(R.id.txtvProfesor);
         txtvFacilidad=findViewById(R.id.txtvFacilidad);
+        Bundle bundle = getIntent().getExtras();
+        String nombreProfe = bundle.getString("nombreProfe");
+        txtvProfesor.setText(nombreProfe);
 
 
         btnAñadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in=new Intent(getApplicationContext(),ComentarioActivity.class);
+                Bundle bundle = getIntent().getExtras();
+                String nombreProfe = bundle.getString("nombreProfe");
+                Log.d("Transito",nombreProfe);
+                in.putExtra("nombreProfe", nombreProfe);
                 startActivity(in);
             }
         });
