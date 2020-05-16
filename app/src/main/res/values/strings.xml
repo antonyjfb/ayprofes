@@ -24,5 +24,6 @@
     <string name="recuperaciónStringTextViewInstrucciones">Escribe tu nombre de usuario y se enviara la contraseña a tu correo</string>
     <string name="recuperaciónStringButtonCambiar">Cambiar</string>
     <string name="recuperaciónStringTextViewNueva">Nueva Contraseña</string>
+    <string name="materiaString">Materia</string>
 
 </resources>

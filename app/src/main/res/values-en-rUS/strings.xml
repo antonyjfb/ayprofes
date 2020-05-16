@@ -25,4 +25,5 @@
     <string name="signUpStringHintPregunta">Question</string>
     <string name="recuperaciónStringButtonCambiar">Change</string>
     <string name="recuperaciónStringTextViewNueva">New Password</string>
+    <string name="materiaString">Subject</string>
 </resources>

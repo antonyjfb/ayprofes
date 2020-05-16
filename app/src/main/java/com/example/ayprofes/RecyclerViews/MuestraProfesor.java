@@ -94,6 +94,12 @@ public class MuestraProfesor {
         this.promedio =  Math.floor(promedioPreliminar * 10) / 10;
     }
 
+    public MuestraProfesor(String nombre, String materia) {
+        this.nombre = nombre;
+        this.materia = materia;
+        this.calificacion = calificacion;
+    }
+
 
     public String getComentario() {
         return comentario;

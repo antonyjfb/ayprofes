@@ -15,9 +15,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //activity main
-        Button btnBuscar, btnLogin;
+        Button btnBuscar, btnLogin, btnAgregar;
         btnBuscar = findViewById(R.id.btnMainBuscar);
         btnLogin = findViewById(R.id.btnMainLogin);
+        btnAgregar = findViewById(R.id.btnAgregarProfe);
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,6 +30,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(in);
+            }
+        });
+        btnAgregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getApplicationContext(),NuevoProfeActivity.class);
                 startActivity(in);
             }
         });
