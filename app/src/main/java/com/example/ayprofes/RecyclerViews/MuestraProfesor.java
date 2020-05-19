@@ -4,7 +4,7 @@ public class MuestraProfesor {
 
     private String nombre;
     private String materia;
-    private String calificacion;
+    private double calificacion;
     private String comentario;
     private float facilidad;
     private float claridad;
@@ -29,11 +29,11 @@ public class MuestraProfesor {
         this.materia = materia;
     }
 
-    public String getCalificacion() {
+    public double getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(String calificacion) {
+    public void setCalificacion(double calificacion) {
         this.calificacion = calificacion;
     }
 
@@ -77,11 +77,6 @@ public class MuestraProfesor {
         this.recomendacion = recomendacion;
     }
 
-    public MuestraProfesor(String nombre, String materia, String calificacion) {
-        this.nombre = nombre;
-        this.materia = materia;
-        this.calificacion = calificacion;
-    }
 
     public MuestraProfesor(String comentario, float claridad, float facilidad, float ayuda, float carga, float recomendacion) {
         this.claridad = claridad;
@@ -94,10 +89,20 @@ public class MuestraProfesor {
         this.promedio =  Math.floor(promedioPreliminar * 10) / 10;
     }
 
+    public MuestraProfesor(String nombre, String materia, double calificacion) {
+        this.nombre = nombre;
+        this.materia = materia;
+        this.calificacion = calificacion;
+    }
+
     public MuestraProfesor(String nombre, String materia) {
         this.nombre = nombre;
         this.materia = materia;
         this.calificacion = calificacion;
+    }
+
+    public MuestraProfesor(){
+
     }
 
 

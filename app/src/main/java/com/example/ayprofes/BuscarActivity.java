@@ -10,13 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ayprofes.RecyclerViews.AdaptadorMuestraProfesor;
 import com.example.ayprofes.RecyclerViews.MuestraProfesor;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 
 public class BuscarActivity extends AppCompatActivity {
 
     RecyclerView rcvBuscarProfesor;
-    ArrayList<MuestraProfesor> profesores;
+    FirebaseFirestore db;
+    AdaptadorMuestraProfesor adaptador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,23 +30,25 @@ public class BuscarActivity extends AppCompatActivity {
         LinearLayoutManager llm=new LinearLayoutManager(getBaseContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rcvBuscarProfesor.setLayoutManager(llm);
-        InicializarProfesores();
-        InicializarAdaptador();
-    }
+        db=FirebaseFirestore.getInstance();
 
-    private void InicializarAdaptador(){
-        AdaptadorMuestraProfesor adaptador=new AdaptadorMuestraProfesor(this.getApplicationContext(),profesores);
+        Query query=db.collection("Profesores");
+        FirestoreRecyclerOptions<MuestraProfesor> firestoreRecyclerOptions=new FirestoreRecyclerOptions.Builder<MuestraProfesor>().setQuery(query,MuestraProfesor.class).build();
+        adaptador=new AdaptadorMuestraProfesor(firestoreRecyclerOptions);
+        adaptador.notifyDataSetChanged();
         rcvBuscarProfesor.setAdapter(adaptador);
     }
 
-    private void InicializarProfesores() {
-        profesores=new ArrayList<>();
-        profesores.add(new MuestraProfesor("María del Pilar Corona Lira","Electrónica Básica","Calificación promedio: 9.5"));
-        profesores.add(new MuestraProfesor("Jorge Armando Rodríguez Vera", "Temas Selectos de Programación", "Calificación promedio: 9.8"));
-        profesores.add(new MuestraProfesor("Francisco Cuenca","Mecanismos", "Calificación promedio: 9"));
-        profesores.add(new MuestraProfesor("Alejandro César López Bolaños", "Introducción a la economía", "Calificación promedio: 8.7"));
-        profesores.add(new MuestraProfesor("Armando Sánchez Guzmán","Ingeniería de Manufactura", "Calificación promedio: 8"));
-        profesores.add(new MuestraProfesor("Álvaro Núñez Flores", "Modelado de sistemas físicos","Calificación promedio: 8.5"));
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adaptador.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adaptador.stopListening();
     }
 }
 
