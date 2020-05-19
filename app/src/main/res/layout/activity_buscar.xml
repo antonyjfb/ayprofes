@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spnMaterias"
         android:layout_width="197dp"
         android:layout_height="59dp"
         android:layout_marginTop="24dp"
@@ -59,7 +59,7 @@
         android:layout_height="350dp"
         android:layout_marginTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintTop_toBottomOf="@+id/spnMaterias"
         app:layout_constraintVertical_bias="0.03"
         tools:layout_editor_absoluteX="0dp" />
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spnMaterias">
+        <item>Filtro Materias</item>
+        <item>Álgebra</item>
+        <item>Álgebra Lineal</item>
+        <item>Análisis de Circuitos</item>
+        <item>Análisis Numérico</item>
+        <item>Automatización Industrial</item>
+        <item>Cálculo Integral</item>
+        <item>Cálculo Vectorial</item>
+        <item>Cálculo y Geometría Analítica</item>
+        <item>Cinemática y Dinámica</item>
+        <item>Control Automático</item>
+        <item>Cultura y Comunicación</item>
+        <item>Circuitos Digitales</item>
+        <item>Desarrollo Empresarial</item>
+        <item>Dibujo Mecánico e Industrial</item>
+        <item>Diseño de Elementos de Maquinas</item>
+        <item>Diseño Mecatrónico</item>
+        <item>Ecuaciones Diferenciales</item>
+        <item>Electricidad y Magnetismo</item>
+        <item>Electrónica Basica</item>
+        <item>Estadística</item>
+        <item>Estática</item>
+        <item>Ética Profecional</item>
+        <item>Física Experimental</item>
+        <item>Fundamentos de Programación</item>
+        <item>Ingeniería Economica</item>
+        <item>Ingeniería de Manufactura</item>
+        <item>Ingeniería de Materiales</item>
+        <item>Instrumentación</item>
+        <item>Introducción a la economía</item>
+        <item>Maquinas Eléctricas</item>
+        <item>Manufactuta 1</item>
+        <item>Matemáticas Avanzadas</item>
+        <item>Mecánica de Sólidos</item>
+        <item>Mecanismos</item>
+        <item>Modelado de Sistemas Físicos</item>
+        <item>Probabilidad</item>
+        <item>Química</item>
+        <item>Redacción y Exposición de Temas de Ingeniería</item>
+        <item>Robótica</item>
+        <item>Sistemas Electrónicos Lineales</item>
+        <item>Técnicas de Programación</item>
+        <item>Temas Selectos de Programación</item>
+        <item>Termodinámica</item>
+        <item>Termofluidos</item>
+    </string-array>
+</resources>

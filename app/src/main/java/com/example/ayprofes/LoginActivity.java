@@ -37,7 +37,6 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnCrear);
         linkOlvide = findViewById(R.id.txtvOlvide);
 
-
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
