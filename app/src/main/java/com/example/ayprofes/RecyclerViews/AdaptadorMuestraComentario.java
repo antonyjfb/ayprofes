@@ -1,6 +1,5 @@
 package com.example.ayprofes.RecyclerViews;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,37 +9,42 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ayprofes.R;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-import java.util.ArrayList;
+public class AdaptadorMuestraComentario extends FirestoreRecyclerAdapter<MuestraComentario,AdaptadorMuestraComentario.MuestraComentarioViewHolder> {
+    /**
+     * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
+     * FirestoreRecyclerOptions} for configuration options.
+     *
+     * @param options
+     */
 
-public class AdaptadorMuestraComentario extends RecyclerView.Adapter<AdaptadorMuestraComentario.MuestraComentarioViewHolder> {
+    public AdaptadorMuestraComentario(@NonNull FirestoreRecyclerOptions<MuestraComentario> options) {
+        super(options);
+    }
 
-    ArrayList<MuestraComentario> comentarios;
-
-    public AdaptadorMuestraComentario(Context context, ArrayList<MuestraComentario> comentarios){
-        this.comentarios=comentarios;
+    @Override
+    protected void onBindViewHolder(@NonNull MuestraComentarioViewHolder holder, int i, @NonNull MuestraComentario muestraComentario) {
+        holder.txtvCVComentario.setText(muestraComentario.getComentario());
     }
 
     @NonNull
     @Override
     public MuestraComentarioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View vista= LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_comentario,parent,false);
+
         return new MuestraComentarioViewHolder(vista);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull MuestraComentarioViewHolder holder, int position) {
-        MuestraComentario comentario=comentarios.get(position);
-        holder.txtvCVComentario.setText(comentario.getComentario());
+    //ArrayList<MuestraComentario> comentarios;
 
-    }
 
-    @Override
-    public int getItemCount() {
-        return comentarios.size();
-    }
 
-    public static class MuestraComentarioViewHolder extends RecyclerView.ViewHolder{
+
+
+
+    public class MuestraComentarioViewHolder extends RecyclerView.ViewHolder{
 
         TextView txtvCVComentario;
 
