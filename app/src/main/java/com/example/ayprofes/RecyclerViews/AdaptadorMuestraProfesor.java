@@ -1,6 +1,5 @@
 package com.example.ayprofes.RecyclerViews;
 
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,10 +16,7 @@ import com.example.ayprofes.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-import java.util.ArrayList;
-
 public class AdaptadorMuestraProfesor extends FirestoreRecyclerAdapter<MuestraProfesor,AdaptadorMuestraProfesor.MuestraProfeViewHolder> {
-
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
@@ -28,6 +24,7 @@ public class AdaptadorMuestraProfesor extends FirestoreRecyclerAdapter<MuestraPr
      *
      * @param options
      */
+
     public AdaptadorMuestraProfesor(@NonNull FirestoreRecyclerOptions<MuestraProfesor> options) {
         super(options);
     }
@@ -72,7 +69,3 @@ public class AdaptadorMuestraProfesor extends FirestoreRecyclerAdapter<MuestraPr
         }
     }
 }
-
-
-
-

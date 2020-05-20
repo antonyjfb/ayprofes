@@ -43,8 +43,6 @@ public class ProfesorActivity extends AppCompatActivity {
         LinearLayoutManager llm=new LinearLayoutManager(getApplicationContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rcvComentario.setLayoutManager(llm);
-        //InicializarComentarios();
-        //InicializarAdaptador();
 
         btnAñadir=findViewById(R.id.btnAñadir);
         txtvCarga=findViewById(R.id.txtvCarga);
@@ -163,19 +161,4 @@ public class ProfesorActivity extends AppCompatActivity {
         adaptador.stopListening();
     }
 
-    /*private void InicializarAdaptador() {
-        AdaptadorMuestraComentario adaptador=new AdaptadorMuestraComentario(this.getApplicationContext(),comentarios);
-        rcvComentario.setAdapter(adaptador);
-    }*/
-
-    /*
-    private void InicializarComentarios() {
-        comentarios=new ArrayList<>();
-        comentarios.add(new MuestraComentario("Muy buen profesor"));
-        comentarios.add(new MuestraComentario("Este profesor deja mucha tarea"));
-        comentarios.add(new MuestraComentario("Sus exámenes son fáciles pero muy largos"));
-        comentarios.add(new MuestraComentario("El profe siempre llega a tiempo y sus clases son muy divertidas"));
-        comentarios.add(new MuestraComentario("Sólo califica con exámenes parciales y tareas"));
-        comentarios.add(new MuestraComentario("Si pudiera volvería a tomar clases con este profesor"));
-    }*/
 }
