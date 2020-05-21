@@ -59,7 +59,7 @@ public class ProfesorActivity extends AppCompatActivity {
         recomendacionRatingBarProfe=findViewById(R.id.recomendacionRatingBarProfe);
 
         Bundle bundle = getIntent().getExtras();
-        String nombreProfe = bundle.getString("nombreProfe");
+        final String nombreProfe = bundle.getString("nombreProfe");
         txtvProfesor.setText(nombreProfe);
 
         db = FirebaseFirestore.getInstance();
@@ -82,6 +82,7 @@ public class ProfesorActivity extends AppCompatActivity {
                         float resultadoCarga = 0;
                         float recomendacionAux;
                         float resultadoRecomendacion = 0;
+                        double calificacionaux;
 
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             ayudaAux = Float.parseFloat(document.getData().get("ayuda").toString());
@@ -102,6 +103,9 @@ public class ProfesorActivity extends AppCompatActivity {
                         resultadoClaridad = resultadoClaridad / i;
                         resultadoRecomendacion = resultadoRecomendacion / i;
                         resultadoFacilidad = resultadoFacilidad / i;
+                        calificacionaux=(resultadoAyuda+resultadoClaridad+resultadoFacilidad+resultadoRecomendacion)/2;
+                        String calificacion=String.format("%.2f",calificacionaux);
+                        db.collection("Profesores").document(nombreProfe).update("calificacion",Double.parseDouble(calificacion));
 
                         ayudaRatingBarProfe.setRating(resultadoAyuda);
                         cargaRatingBarProfe.setRating(resultadoCarga);
