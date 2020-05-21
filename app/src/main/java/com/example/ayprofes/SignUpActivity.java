@@ -1,6 +1,8 @@
 package com.example.ayprofes;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +15,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompatSideChannelService;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -162,6 +163,17 @@ public class SignUpActivity extends AppCompatActivity {
                                             //
                                             //Codigo para conectarse
                                             //
+
+                                            SharedPreferences sharedPreferences = getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString("Usuario",usuario);
+                                            editor.commit();
+
+                                            Toast.makeText(getApplicationContext(), "Se ha iniciado sesión", Toast.LENGTH_SHORT).show();
+
+                                            Intent in = new Intent(getApplicationContext(),LoginActivity.class);
+                                            startActivity(in);
+
 
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {

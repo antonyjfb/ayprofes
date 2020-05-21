@@ -36,12 +36,13 @@
         android:id="@+id/edtContraseñaLogin"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="24dp"
         android:hint="@string/loginStringHintContraseña"
         android:inputType="textEmailAddress"
         android:textColor="@color/colorPrimaryText"
         android:textColorHint="@color/colorPrimaryText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtUsuarioLogin" />
 
@@ -49,26 +50,26 @@
         android:id="@+id/txtvOlvide"
         android:layout_width="139dp"
         android:layout_height="26dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
         android:autoLink="all"
         android:clickable="true"
         android:linksClickable="true"
         android:text="@string/loginStringHintTextViewOlvide"
         android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtContraseña" />
+        app:layout_constraintTop_toBottomOf="@+id/edtContraseñaLogin" />
 
     <Button
         android:id="@+id/btnEntrar"
         android:layout_width="128dp"
         android:layout_height="48dp"
-        android:layout_marginTop="408dp"
+        android:layout_marginTop="328dp"
         android:background="@drawable/roundedbutton"
         android:text="@string/loginStringButtonEntrar"
         android:textColor="@color/colorPrimaryText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,6 +85,30 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.721" />
+        app:layout_constraintVertical_bias="0.572" />
+
+    <TextView
+        android:id="@+id/txtvUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCrear" />
+
+    <Button
+        android:id="@+id/btnCerrar"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="21dp"
+        android:background="@drawable/roundedbutton"
+        android:text="Cerrar sesión"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvUsuario" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

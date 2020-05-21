@@ -27,7 +27,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class ProfesorActivity extends AppCompatActivity {
 
     RecyclerView rcvComentario;
-    //ArrayList<MuestraComentario> comentarios;
     AdaptadorMuestraComentario adaptador;
 
     TextView txtvCarga, txtvRecomendacion, txtvAyuda, txtvClaridad, txtvNombre, txtvProfesor,txtvFacilidad;
@@ -136,17 +135,32 @@ public class ProfesorActivity extends AppCompatActivity {
         btnAñadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in=new Intent(getApplicationContext(),ComentarioActivity.class);
-                Bundle bundle = getIntent().getExtras();
-                String nombreProfe = bundle.getString("nombreProfe");
-                Log.d("Transito",nombreProfe);
-                in.putExtra("nombreProfe", nombreProfe);
-                startActivity(in);
+
+                //
+                //NO BORREN LO QUE ESTA COMENTADO PORQUE LO VAMOS A USAR PARA VALIDAR QUE EL USUARIO A INICIADO SESION
+                //SOLO LO COMENTO PARA SEGUIR REALIZANDO PRUEBAS
+                //
+
+
+                //SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
+                //String usuario=sharedPreferences.getString("Usuario","No hay info");
+
+                //if(usuario!="No hay info") {
+
+                    Intent in = new Intent(getApplicationContext(), ComentarioActivity.class);
+                    Bundle bundle = getIntent().getExtras();
+                    String nombreProfe = bundle.getString("nombreProfe");
+                    Log.d("Transito", nombreProfe);
+                    in.putExtra("nombreProfe", nombreProfe);
+                    startActivity(in);
+
+                //}
+                //else
+                //{
+                //   Toast.makeText(getApplicationContext(), "Se necesita iniciar sesion para añadir comentario", Toast.LENGTH_SHORT).show();
+                //}
             }
         });
-
-
-
     }
 
     @Override
