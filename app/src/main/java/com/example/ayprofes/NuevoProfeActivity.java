@@ -1,5 +1,6 @@
 package com.example.ayprofes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -49,6 +50,9 @@ public class NuevoProfeActivity extends AppCompatActivity {
                 filler.put("nombre", profe.getNombre());
                 filler.put("materia", profe.getMateria());
                 db.collection("Profesores").document(profe.getNombre()).set(filler);
+                Intent in=new Intent(v.getContext(),ComentarioActivity.class);
+                in.putExtra("nombreProfe", profe.getNombre());
+                v.getContext().startActivity(in);
             }
         });
     }

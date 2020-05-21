@@ -1,5 +1,6 @@
 package com.example.ayprofes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -53,16 +54,13 @@ public class ComentarioActivity extends AppCompatActivity {
                 // get values and then displayed in a toast
                 db = FirebaseFirestore.getInstance();
                 profe = new MuestraProfesor(comentarioBox.getText().toString(),claridadRatingBar.getRating(),facilidadRatingBar.getRating(),ayudaRatingBar.getRating(),workloadRatingBar.getRating(),recommendationRatingBar.getRating());
-                Map<String, Object> filler = new HashMap<>();
                 String direccion = nombreProfe;
-                //String direccion = "Profesor3";
-                filler.put("exists", true);
-                db.collection("Profesores").document(direccion)
-                        .set(filler);
                 db.collection("Profesores").document(direccion).collection("Comentarios").add(profe).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d("Firebase", "DocumentSnapshot written with ID: " + documentReference.getId());
+                        Intent in=new Intent(getApplicationContext(),ProfesorActivity.class);
+                        getApplicationContext().startActivity(in);
                     }
                 })
                         .addOnFailureListener(new OnFailureListener() {
