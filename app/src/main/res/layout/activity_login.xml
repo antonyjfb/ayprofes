@@ -51,28 +51,27 @@
         android:id="@+id/btnEntrar"
         android:layout_width="128dp"
         android:layout_height="48dp"
-        android:layout_marginTop="328dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/roundedbutton"
         android:text="@string/loginStringButtonEntrar"
         android:textColor="@color/colorPrimaryText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/edtContraseñaLogin" />
 
     <Button
         android:id="@+id/btnCrear"
         android:layout_width="128dp"
         android:layout_height="48dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/roundedbutton"
         android:text="@string/loginStringButtonCrear"
         android:textColor="@color/colorPrimaryText"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.572" />
+        app:layout_constraintTop_toBottomOf="@+id/btnEntrar" />
 
     <TextView
         android:id="@+id/txtvUsuario"
