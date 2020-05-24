@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@mipmap/ic_fondo"
     android:layout_height="match_parent">
 
     <EditText
@@ -21,22 +21,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spnPreguntas" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="185dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="68dp"
-        android:text="@string/app_name"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/edtUsuario"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
         android:hint="@string/loginStringHintUsuario"
         android:inputType="textEmailAddress"
         android:textColor="@color/colorPrimaryText"
@@ -44,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <EditText
         android:id="@+id/edtContraseña"
@@ -96,5 +85,14 @@
         app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtContraseña2" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_ay_foreground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

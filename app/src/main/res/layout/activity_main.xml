@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@mipmap/ic_fondo"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btnMainLogin"
         android:layout_width="138dp"
         android:layout_height="41dp"
-        android:layout_marginTop="364dp"
+        android:layout_marginTop="388dp"
         android:background="@drawable/roundedbutton"
         android:text="@string/mainStringButtonLogin"
         android:textColor="@color/colorPrimaryText"
@@ -24,22 +24,10 @@
         android:id="@+id/btnMainBuscar"
         android:layout_width="229dp"
         android:layout_height="64dp"
-        android:layout_marginTop="256dp"
+        android:layout_marginTop="268dp"
         android:background="@drawable/roundedbutton"
         android:text="@string/mainStringButtonBuscar"
         android:textColor="@color/colorPrimaryText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtvNombre"
-        android:layout_width="185dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="145dp"
-        android:text="@string/app_name"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,6 +44,17 @@
         app:layout_constraintHorizontal_bias="0.827"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_marca" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

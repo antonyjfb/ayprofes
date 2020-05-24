@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@mipmap/ic_fondo"
     android:layout_height="match_parent">
 
     <EditText
@@ -30,7 +30,7 @@
         android:layout_height="56dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="84dp"
-        android:background="@color/colorPrimaryDark"
+
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:rating="5"
@@ -45,7 +45,7 @@
         android:layout_height="54dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="272dp"
-        android:background="@color/colorPrimaryDark"
+
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:rating="5"
@@ -84,14 +84,13 @@
         android:id="@+id/txtvProfesor"
         android:layout_width="321dp"
         android:layout_height="49dp"
-        android:layout_marginTop="4dp"
         android:text="@string/comentarioStringTextViewNombre"
         android:textColor="@color/colorPrimaryText"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.244"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtvNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
         android:id="@+id/txtvFacilidad"
@@ -132,19 +131,6 @@
         app:layout_constraintTop_toBottomOf="@+id/txtvRecomendacion" />
 
     <TextView
-        android:id="@+id/txtvNombre"
-        android:layout_width="185dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/app_name"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.407"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/txtvRecomendacion"
         android:layout_width="102dp"
         android:layout_height="65dp"
@@ -163,7 +149,7 @@
         android:layout_height="55dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="204dp"
-        android:background="@color/colorPrimaryDark"
+
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:rating="5"
@@ -178,7 +164,7 @@
         android:layout_height="58dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="140dp"
-        android:background="@color/colorPrimaryDark"
+
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:rating="5"
@@ -193,7 +179,7 @@
         android:layout_height="55dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-        android:background="@color/colorPrimaryDark"
+
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:rating="5"
@@ -211,6 +197,15 @@
         android:textColor="@color/colorPrimaryText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="99dp"
+        android:layout_height="74dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnEnviarComentario"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_ay_foreground" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

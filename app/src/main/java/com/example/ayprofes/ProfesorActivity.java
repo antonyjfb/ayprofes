@@ -50,7 +50,6 @@ public class ProfesorActivity extends AppCompatActivity {
         txtvRecomendacion=findViewById(R.id.txtvRecomendacion);
         txtvAyuda=findViewById(R.id.txtvAyuda);
         txtvClaridad=findViewById(R.id.txtvClaridad);
-        txtvNombre=findViewById(R.id.txtvNombre);
         txtvProfesor=findViewById(R.id.txtvProfesor);
         txtvFacilidad=findViewById(R.id.txtvFacilidad);
 
