@@ -33,8 +33,8 @@ public class AdaptadorMuestraProfesor extends FirestoreRecyclerAdapter<MuestraPr
     protected void onBindViewHolder(@NonNull MuestraProfeViewHolder holder, int position, @NonNull final MuestraProfesor muestraProfesor) {
 
         //holder.txtvCVNombre.setText(muestraProfesor.getNombre());
-        holder.txtvCVMateria.setText(muestraProfesor.getMateria());
-        holder.txtvCVCalificacion.setText(String.valueOf(muestraProfesor.getCalificacion()));
+        holder.txtvCVMateria.setText("Materia: "+muestraProfesor.getMateria());
+        holder.txtvCVCalificacion.setText("Calificación: "+String.valueOf(muestraProfesor.getCalificacion()));
         holder.btnCVPerfil.setText(muestraProfesor.getNombre());
         holder.btnCVPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
