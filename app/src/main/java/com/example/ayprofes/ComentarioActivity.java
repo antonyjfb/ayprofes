@@ -1,4 +1,4 @@
-package com.example.ayprofes;
+ package com.example.ayprofes;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,17 +19,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class ComentarioActivity extends AppCompatActivity {
 
     FirebaseFirestore db;
     MuestraProfesor profe;
-
+    TextView txtvProfesor;
 
     //Antony se la come
     //x2
+    //x3
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +44,7 @@ public class ComentarioActivity extends AppCompatActivity {
         recommendationRatingBar = findViewById(R.id.recommendationRatingBar);
         Button submitButton = (Button) findViewById(R.id.btnEnviarComentario);
         Bundle bundle = getIntent().getExtras();
+        txtvProfesor = findViewById(R.id.txtvProfesor);
         final String nombreProfe = bundle.getString("nombreProfe");
         nombreDelProfesor.setText(nombreProfe);
         // perform click event on button
@@ -55,20 +55,33 @@ public class ComentarioActivity extends AppCompatActivity {
                 db = FirebaseFirestore.getInstance();
                 profe = new MuestraProfesor(comentarioBox.getText().toString(),claridadRatingBar.getRating(),facilidadRatingBar.getRating(),ayudaRatingBar.getRating(),workloadRatingBar.getRating(),recommendationRatingBar.getRating());
                 String direccion = nombreProfe;
-                db.collection("Profesores").document(direccion).collection("Comentarios").add(profe).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d("Firebase", "DocumentSnapshot written with ID: " + documentReference.getId());
-                        Intent in=new Intent(getApplicationContext(),ProfesorActivity.class);
-                        getApplicationContext().startActivity(in);
-                    }
-                })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.e("Firebase", "Error adding document", e);
-                            }
-                        });
+
+                    db.collection("Profesores").document(direccion).collection("Comentarios").add(profe).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Log.d("Firebase", "DocumentSnapshot written with ID: " + documentReference.getId());
+                            Toast.makeText(getApplicationContext(), "Se ha añadido el comentario correctamente", Toast.LENGTH_SHORT).show();
+                            Intent in = new Intent(ComentarioActivity.this,ProfesorActivity.class);
+                            Bundle miBundle=new Bundle();
+                            miBundle.putString("nombreProfe",txtvProfesor.getText().toString());
+                            in.putExtras(miBundle);
+                            startActivity(in);
+
+                            /*
+                            Intent in = new Intent(getApplicationContext(), ProfesorActivity.class);
+                            //getApplicationContext().startActivity(in);
+                            startActivity(in);
+                            /*
+                             */
+                        }
+                    })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.e("Firebase", "Error adding document", e);
+                                }
+                            });
+
             }
         });
     }

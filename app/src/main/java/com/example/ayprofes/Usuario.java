@@ -1,6 +1,10 @@
 package com.example.ayprofes;
 
 public class Usuario {
+    public Usuario(String nombre) {
+        this.nombre = nombre;
+    }
+
     private String nombre;
     private String contraseña;
     private String pregunta;

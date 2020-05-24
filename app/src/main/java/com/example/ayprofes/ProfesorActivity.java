@@ -29,6 +29,8 @@ public class ProfesorActivity extends AppCompatActivity {
     RecyclerView rcvComentario;
     AdaptadorMuestraComentario adaptador;
 
+    String usuarioAux;
+
     TextView txtvCarga, txtvRecomendacion, txtvAyuda, txtvClaridad, txtvNombre, txtvProfesor,txtvFacilidad;
     Button btnAñadir;
     RatingBar facilidadRatingBarProfe, claridadRatingBarProfe, ayudaRatingBarProfe, cargaRatingBarProfe, recomendacionRatingBarProfe;
@@ -145,24 +147,45 @@ public class ProfesorActivity extends AppCompatActivity {
                 //SOLO LO COMENTO PARA SEGUIR REALIZANDO PRUEBAS
                 //
 
+                db = FirebaseFirestore.getInstance();
 
-                //SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
-                //String usuario=sharedPreferences.getString("Usuario","No hay info");
+                try {
+                    db.collection("Enlinea")
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if (task.isSuccessful()) {
 
-                //if(usuario!="No hay info") {
+                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                            usuarioAux =document.getData().get("nombre").toString();
 
-                    Intent in = new Intent(getApplicationContext(), ComentarioActivity.class);
-                    Bundle bundle = getIntent().getExtras();
-                    String nombreProfe = bundle.getString("nombreProfe");
-                    Log.d("Transito", nombreProfe);
-                    in.putExtra("nombreProfe", nombreProfe);
-                    startActivity(in);
+                                            Log.d("Prueba",usuarioAux);
+                                        }
 
-                //}
-                //else
-                //{
-                //   Toast.makeText(getApplicationContext(), "Se necesita iniciar sesion para añadir comentario", Toast.LENGTH_SHORT).show();
-                //}
+                                        if(usuarioAux==null) {
+                                            Toast.makeText(getApplicationContext(), "Se requiere iniciar sesión para comentar", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else
+                                        {
+                                            Intent in = new Intent(getApplicationContext(), ComentarioActivity.class);
+                                            Bundle bundle = getIntent().getExtras();
+                                            String nombreProfe = bundle.getString("nombreProfe");
+                                            Log.d("Transito", nombreProfe);
+                                            in.putExtra("nombreProfe", nombreProfe);
+                                            startActivity(in);
+                                        }
+
+                                    } else {
+                                        Log.w("Hola", "Error getting documents.", task.getException());
+                                    }
+                                }
+                            });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Ha ocurrido un error, intente de nuevo", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }

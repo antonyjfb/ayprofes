@@ -1,8 +1,6 @@
 package com.example.ayprofes;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -164,10 +162,18 @@ public class SignUpActivity extends AppCompatActivity {
                                             //Codigo para conectarse
                                             //
 
-                                            SharedPreferences sharedPreferences = getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
-                                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                                            editor.putString("Usuario",usuario);
-                                            editor.commit();
+                                            Usuario miLinea = new Usuario(usuario);
+                                            db.collection("Enlinea").document(usuario).set(miLinea).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    Toast.makeText(getApplicationContext(), "Ha iniciado sesión", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+
+                                                }
+                                            });
 
                                             Toast.makeText(getApplicationContext(), "Se ha iniciado sesión", Toast.LENGTH_SHORT).show();
 
