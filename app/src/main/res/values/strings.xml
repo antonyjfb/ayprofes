@@ -25,5 +25,7 @@
     <string name="recuperaciónStringButtonCambiar">Cambiar</string>
     <string name="recuperaciónStringTextViewNueva">Nueva Contraseña</string>
     <string name="materiaString">Materia</string>
+    <string name="aceptarString">Aceptar</string>
+
 
 </resources>

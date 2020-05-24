@@ -8,36 +8,26 @@
     tools:context=".MainActivity"
     tools:ignore="MissingDefaultResource">
 
-    <TextView
-        android:id="@+id/txtvNombre"
-        android:layout_width="185dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="56dp"
-        android:text="@string/app_name"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/txtvInstrucciones"
-        android:layout_width="266dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="324dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
         android:text="@string/recuperaciónStringTextViewInstrucciones"
         android:textColor="#575555"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.213"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtvNombre" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edtRecuperarUsuario"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="116dp"
         android:hint="@string/loginStringHintUsuario"
         android:inputType="textEmailAddress"
         android:textColor="@color/colorPrimaryText"
@@ -45,32 +35,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtvNombre" />
+        app:layout_constraintTop_toTopOf="@+id/txtvInstrucciones" />
 
     <Button
         android:id="@+id/btnVerificar"
         android:layout_width="128dp"
         android:layout_height="48dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="23dp"
         android:background="@drawable/roundedbutton"
         android:text="@string/comentarioStringButtonEnviar"
         android:textColor="@color/colorPrimaryText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.893"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/edtRecuperarUsuario" />
 
 
     <TextView
         android:id="@+id/txtvPregunta"
         android:layout_width="185dp"
-        android:layout_height="57dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="20dp"
         android:text="pregunta"
         android:textColor="@color/colorPrimaryText"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtRecuperarUsuario" />
@@ -79,13 +69,14 @@
         android:id="@+id/edtRespuestaContraseña"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="24dp"
         android:hint="@string/signUpStringHintRespuesta"
         android:inputType="textEmailAddress"
         android:textColor="@color/colorPrimaryText"
         android:textColorHint="@color/colorPrimaryText"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtvPregunta" />
 
@@ -116,5 +107,19 @@
         app:layout_constraintHorizontal_bias="0.893"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtNuevaContraseña" />
+
+    <Button
+        android:id="@+id/btnOK"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/roundedbutton"
+        android:text="@string/aceptarString"
+        android:visibility="invisible"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtRecuperarUsuario" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

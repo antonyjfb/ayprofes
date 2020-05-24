@@ -1,5 +1,6 @@
 package com.example.ayprofes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,7 @@ public class RecoverActivity extends AppCompatActivity {
     EditText edtRespuestaContraseña;
     EditText edtNuevaContraseña;
     TextView txtvPregunta;
+    Button btnOk;
 
     //FireStore
     FirebaseFirestore db;
@@ -47,6 +49,7 @@ public class RecoverActivity extends AppCompatActivity {
         edtRespuestaContraseña  = findViewById(R.id.edtRespuestaContraseña);
         edtNuevaContraseña = findViewById(R.id.edtNuevaContraseña);
         txtvPregunta = findViewById(R.id.txtvPregunta);
+        btnOk=findViewById(R.id.btnOK);
 
         btnVerificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,10 +98,19 @@ public class RecoverActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
 
-                                                        edtRespuestaContraseña.setVisibility(View.GONE);
+                                                       edtRespuestaContraseña.setVisibility(View.GONE);
                                                         edtNuevaContraseña.setVisibility(View.GONE);
                                                         btnNuevaContraseña.setVisibility(View.GONE);
                                                         txtvPregunta.setText("Se ha cambiado la contraseña con exito");
+                                                        btnOk.setVisibility(View.VISIBLE);
+                                                        btnOk.setOnClickListener(new View.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(View v) {
+                                                                Intent in=new Intent(v.getContext(),LoginActivity.class);
+                                                                v.getContext().startActivity(in);
+                                                            }
+                                                        });
+
 
                                                     }
                                                 }).addOnFailureListener(new OnFailureListener() {
