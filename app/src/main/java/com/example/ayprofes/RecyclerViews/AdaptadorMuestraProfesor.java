@@ -32,9 +32,10 @@ public class AdaptadorMuestraProfesor extends FirestoreRecyclerAdapter<MuestraPr
     @Override
     protected void onBindViewHolder(@NonNull MuestraProfeViewHolder holder, int position, @NonNull final MuestraProfesor muestraProfesor) {
 
-        holder.txtvCVNombre.setText(muestraProfesor.getNombre());
+        //holder.txtvCVNombre.setText(muestraProfesor.getNombre());
         holder.txtvCVMateria.setText(muestraProfesor.getMateria());
         holder.txtvCVCalificacion.setText(String.valueOf(muestraProfesor.getCalificacion()));
+        holder.btnCVPerfil.setText(muestraProfesor.getNombre());
         holder.btnCVPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +55,7 @@ public class AdaptadorMuestraProfesor extends FirestoreRecyclerAdapter<MuestraPr
     }
 
     public class MuestraProfeViewHolder extends RecyclerView.ViewHolder{
-        TextView txtvCVNombre;
+        //TextView txtvCVNombre;
         TextView txtvCVMateria;
         TextView txtvCVCalificacion;
         Button btnCVPerfil;
@@ -62,7 +63,7 @@ public class AdaptadorMuestraProfesor extends FirestoreRecyclerAdapter<MuestraPr
         public MuestraProfeViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            txtvCVNombre=itemView.findViewById(R.id.txtvCVNombre);
+            //txtvCVNombre=itemView.findViewById(R.id.txtvCVNombre);
             txtvCVMateria=itemView.findViewById(R.id.txtvCVMateria);
             txtvCVCalificacion=itemView.findViewById(R.id.txtvCVCalificacion);
             btnCVPerfil=itemView.findViewById(R.id.btnCVPerfil);
