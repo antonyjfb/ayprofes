@@ -65,6 +65,7 @@ public class ProfesorActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
+
     try {
     db.collection("Profesores").document(nombreProfe).collection("Comentarios")
             .get()
@@ -72,6 +73,8 @@ public class ProfesorActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if (task.isSuccessful()) {
+
+                        //Variables auxiliares para obtener promedios
                         int i = 0;
                         float ayudaAux;
                         float resultadoAyuda = 0;
@@ -85,6 +88,7 @@ public class ProfesorActivity extends AppCompatActivity {
                         float resultadoRecomendacion = 0;
                         double calificacionaux;
 
+                        //For que recorre todos los documentos de la collección
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             ayudaAux = Float.parseFloat(document.getData().get("ayuda").toString());
                             cargaAux = Float.parseFloat(document.getData().get("carga").toString());
@@ -92,6 +96,7 @@ public class ProfesorActivity extends AppCompatActivity {
                             claridadAux = Float.parseFloat(document.getData().get("claridad").toString());
                             recomendacionAux = Float.parseFloat(document.getData().get("recomendacion").toString());
 
+                            //Suma de todos los comentarios de los usuarios
                             resultadoAyuda = resultadoAyuda + ayudaAux;
                             resultadoCarga = resultadoCarga + cargaAux;
                             resultadoClaridad = resultadoClaridad + claridadAux;
@@ -99,6 +104,7 @@ public class ProfesorActivity extends AppCompatActivity {
                             resultadoRecomendacion = resultadoRecomendacion + recomendacionAux;
                             i++;
                         }
+                        //Promedios finales
                         resultadoAyuda = resultadoAyuda / i;
                         resultadoCarga = resultadoCarga / i;
                         resultadoClaridad = resultadoClaridad / i;
@@ -140,55 +146,53 @@ public class ProfesorActivity extends AppCompatActivity {
         btnAñadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //
-                //NO BORREN LO QUE ESTA COMENTADO PORQUE LO VAMOS A USAR PARA VALIDAR QUE EL USUARIO A INICIADO SESION
-                //SOLO LO COMENTO PARA SEGUIR REALIZANDO PRUEBAS
-                //
-
-                db = FirebaseFirestore.getInstance();
-
-                try {
-                    db.collection("Enlinea")
-                            .get()
-                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                    if (task.isSuccessful()) {
-
-                                        for (QueryDocumentSnapshot document : task.getResult()) {
-                                            usuarioAux =document.getData().get("nombre").toString();
-
-                                            Log.d("Prueba",usuarioAux);
-                                        }
-
-                                        if(usuarioAux==null) {
-                                            Toast.makeText(getApplicationContext(), "Se requiere iniciar sesión para comentar", Toast.LENGTH_SHORT).show();
-                                        }
-                                        else
-                                        {
-                                            Intent in = new Intent(getApplicationContext(), ComentarioActivity.class);
-                                            Bundle bundle = getIntent().getExtras();
-                                            String nombreProfe = bundle.getString("nombreProfe");
-                                            Log.d("Transito", nombreProfe);
-                                            in.putExtra("nombreProfe", nombreProfe);
-                                            startActivity(in);
-                                        }
-
-                                    } else {
-                                        Log.w("Hola", "Error getting documents.", task.getException());
-                                    }
-                                }
-                            });
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Ha ocurrido un error, intente de nuevo", Toast.LENGTH_SHORT).show();
-                }
-
+                ConfirmarConeccion();
             }
         });
     }
 
+    public void ConfirmarConeccion()
+    {
+        //Instancia de la base de datos
+        db = FirebaseFirestore.getInstance();
+
+        //Realiza una consulta a la base de datos
+        try {
+            db.collection("Enlinea")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    usuarioAux =document.getData().get("nombre").toString();
+                                }
+
+                                //Valida si el usuario ha iniciado sesión
+                                if(usuarioAux==null) {
+                                    Toast.makeText(getApplicationContext(), "Se requiere iniciar sesión para comentar", Toast.LENGTH_SHORT).show();
+                                }
+                                else
+                                {
+                                    Intent in = new Intent(getApplicationContext(), ComentarioActivity.class);
+                                    Bundle bundle = getIntent().getExtras();
+                                    String nombreProfe = bundle.getString("nombreProfe");
+                                    Log.d("Transito", nombreProfe);
+                                    in.putExtra("nombreProfe", nombreProfe);
+                                    startActivity(in);
+                                }
+
+                            } else {
+                                Log.w("Hola", "Error getting documents.", task.getException());
+                            }
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Ha ocurrido un error, intente de nuevo", Toast.LENGTH_SHORT).show();
+        }
+    }
     @Override
     protected void onStart() {
         super.onStart();
