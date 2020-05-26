@@ -11,9 +11,9 @@
         android:id="@+id/txtvClaridad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="30dp"
         android:text="@string/comentarioStringTextViewClaridad"
         android:textColor="@color/colorPrimaryText"
         android:textSize="25sp"
@@ -22,37 +22,37 @@
 
     <TextView
         android:id="@+id/txtvRecomendacion"
-        android:layout_width="104dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="130dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
         android:text="@string/comentarioStringTextViewRecomendación"
         android:textColor="@color/colorPrimaryText"
-        android:textSize="25sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtvCarga" />
+        app:layout_constraintTop_toBottomOf="@+id/facilidadRatingBarProfe" />
 
     <TextView
         android:id="@+id/txtvCarga"
-        android:layout_width="106dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="87dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="20dp"
         android:text="@string/comentarioStringTextViewCarga"
         android:textColor="@color/colorPrimaryText"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/claridadRatingBarProfe"
         app:layout_constraintTop_toBottomOf="@+id/txtvAyuda" />
 
     <TextView
         android:id="@+id/txtvFacilidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="26dp"
         android:text="@string/comentarioStringTextViewFacilidad"
         android:textColor="@color/colorPrimaryText"
         android:textSize="25sp"
@@ -63,23 +63,24 @@
         android:id="@+id/txtvAyuda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="24dp"
         android:text="@string/comentarioStringTextViewAyuda"
         android:textColor="@color/colorPrimaryText"
         android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtvClaridad" />
+        app:layout_constraintStart_toEndOf="@+id/claridadRatingBarProfe"
+        app:layout_constraintTop_toBottomOf="@+id/txtvProfesor" />
 
     <TextView
         android:id="@+id/txtvProfesor"
         android:layout_width="321dp"
         android:layout_height="49dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
         android:text="@string/comentarioStringTextViewNombre"
         android:textColor="@color/colorPrimaryText"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
@@ -87,9 +88,9 @@
         android:id="@+id/btnAñadir"
         android:layout_width="241dp"
         android:layout_height="41dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/roundedbutton"
         android:text="@string/comentarioStringButtonAñadir"
         android:textColor="@color/colorPrimaryText"
@@ -98,50 +99,58 @@
 
     <RatingBar
         android:id="@+id/facilidadRatingBarProfe"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
+        android:layout_width="58dp"
+        android:layout_height="47dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="6dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="20dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:rating="5"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtvFacilidad"
         app:layout_constraintTop_toBottomOf="@+id/claridadRatingBarProfe" />
 
     <RatingBar
         android:id="@+id/claridadRatingBarProfe"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
+        android:layout_width="57dp"
+        android:layout_height="44dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="16dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:rating="5"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtvFacilidad"
         app:layout_constraintTop_toBottomOf="@+id/txtvProfesor" />
 
     <RatingBar
         android:id="@+id/ayudaRatingBarProfe"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
+        android:layout_width="53dp"
+        android:layout_height="42dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="18dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:rating="5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/facilidadRatingBarProfe" />
+        app:layout_constraintStart_toEndOf="@+id/txtvCarga"
+        app:layout_constraintTop_toBottomOf="@+id/txtvProfesor" />
 
     <RatingBar
         android:id="@+id/cargaRatingBarProfe"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
+        android:layout_width="58dp"
+        android:layout_height="46dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="2dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="20dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:rating="5"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtvCarga"
         app:layout_constraintTop_toBottomOf="@+id/ayudaRatingBarProfe" />
 
     <RatingBar
@@ -149,27 +158,77 @@
         android:layout_width="250dp"
         android:layout_height="45dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="38dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:rating="5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cargaRatingBarProfe" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/txtvRecomendacion"
+        app:layout_constraintTop_toBottomOf="@+id/facilidadRatingBarProfe" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvComentario"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtvRecomendacion"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_width="381dp"
+        android:layout_height="224dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recomendacionRatingBarProfe" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="152dp"
+        android:layout_marginLeft="152dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_ay_foreground" />
+
+    <TextView
+        android:id="@+id/textvFacilidadCalif"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
+        android:textColor="@color/colorPrimaryText"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/claridadRatingBarProfe"
+        app:layout_constraintStart_toEndOf="@+id/claridadRatingBarProfe" />
+
+    <TextView
+        android:id="@+id/textvClaridadCalif"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
+        android:textColor="@color/colorPrimaryText"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/facilidadRatingBarProfe"
+        app:layout_constraintStart_toEndOf="@+id/facilidadRatingBarProfe" />
+
+    <TextView
+        android:id="@+id/textvAyudaCalif"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
+        android:textColor="@color/colorPrimaryText"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ayudaRatingBarProfe"
+        app:layout_constraintStart_toEndOf="@+id/ayudaRatingBarProfe" />
+
+    <TextView
+        android:id="@+id/textvCargaCalif"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
+        android:textColor="@color/colorPrimaryText"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cargaRatingBarProfe"
+        app:layout_constraintStart_toEndOf="@+id/cargaRatingBarProfe" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

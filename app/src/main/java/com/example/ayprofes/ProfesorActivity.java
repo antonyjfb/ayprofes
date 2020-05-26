@@ -31,7 +31,7 @@ public class ProfesorActivity extends AppCompatActivity {
 
     String usuarioAux;
 
-    TextView txtvCarga, txtvRecomendacion, txtvAyuda, txtvClaridad, txtvNombre, txtvProfesor,txtvFacilidad;
+    TextView txtvCarga, txtvRecomendacion, txtvAyuda, txtvClaridad, txtvNombre, txtvProfesor,txtvFacilidad, txtvCargaCalif, txtvAyudaCalif, txtvClaridadCalif, txtvFacilidadCalif;
     Button btnAñadir;
     RatingBar facilidadRatingBarProfe, claridadRatingBarProfe, ayudaRatingBarProfe, cargaRatingBarProfe, recomendacionRatingBarProfe;
     FirebaseFirestore db;
@@ -52,6 +52,11 @@ public class ProfesorActivity extends AppCompatActivity {
         txtvClaridad=findViewById(R.id.txtvClaridad);
         txtvProfesor=findViewById(R.id.txtvProfesor);
         txtvFacilidad=findViewById(R.id.txtvFacilidad);
+        txtvCargaCalif=findViewById(R.id.textvCargaCalif);
+        txtvAyudaCalif=findViewById(R.id.textvAyudaCalif);
+        txtvClaridadCalif=findViewById(R.id.textvClaridadCalif);
+        txtvFacilidadCalif=findViewById(R.id.textvFacilidadCalif);
+
 
         facilidadRatingBarProfe=findViewById(R.id.facilidadRatingBarProfe);
         claridadRatingBarProfe=findViewById(R.id.claridadRatingBarProfe);
@@ -106,13 +111,31 @@ public class ProfesorActivity extends AppCompatActivity {
                         resultadoFacilidad = resultadoFacilidad / i;
                         calificacionaux=(resultadoAyuda+resultadoClaridad+resultadoFacilidad+resultadoRecomendacion)/2;
                         String calificacion=String.format("%.2f",calificacionaux);
+
+                        String resultadoAyudaString, resultadoCargaString, resultadoClaridadString, resultadoFacilidadString;
+                        resultadoAyudaString=String.format("%.1f",resultadoAyuda);
+                        resultadoCargaString=String.format("%.1f",resultadoCarga);
+                        resultadoClaridadString=String.format("%.1f",resultadoClaridad);
+                        resultadoFacilidadString=String.format("%.1f",resultadoFacilidad);
+
                         db.collection("Profesores").document(nombreProfe).update("calificacion",Double.parseDouble(calificacion));
 
-                        ayudaRatingBarProfe.setRating(resultadoAyuda);
+                        /*ayudaRatingBarProfe.setRating(resultadoAyuda);
                         cargaRatingBarProfe.setRating(resultadoCarga);
                         claridadRatingBarProfe.setRating(resultadoClaridad);
                         recomendacionRatingBarProfe.setRating(resultadoRecomendacion);
-                        facilidadRatingBarProfe.setRating(resultadoFacilidad);
+                        facilidadRatingBarProfe.setRating(resultadoFacilidad);*/
+
+                        ayudaRatingBarProfe.setRating(5);
+                        cargaRatingBarProfe.setRating(5);
+                        claridadRatingBarProfe.setRating(5);
+                        recomendacionRatingBarProfe.setRating(resultadoRecomendacion);
+                        facilidadRatingBarProfe.setRating(5);
+
+                        txtvAyudaCalif.setText(resultadoAyudaString);
+                        txtvCargaCalif.setText(resultadoCargaString);
+                        txtvClaridadCalif.setText(resultadoClaridadString);
+                        txtvFacilidadCalif.setText(resultadoFacilidadString);
 
                         ayudaRatingBarProfe.setEnabled(false);
                         cargaRatingBarProfe.setEnabled(false);
