@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                                         db.collection("Enlinea").document(usuario).set(miLinea).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                                edtUsuario.setVisibility(View.GONE);
+                                                /*edtUsuario.setVisibility(View.GONE);
                                                 edtContraseña.setVisibility(View.GONE);
                                                 btnEntrar.setVisibility(View.GONE);
                                                 btnLogin.setVisibility(View.GONE);
@@ -92,7 +92,9 @@ public class LoginActivity extends AppCompatActivity {
                                                 txtvUsuario.setEnabled(false);
 
                                                 btnCerrar.setVisibility(View.VISIBLE);
-                                                txtvUsuario.setVisibility(View.VISIBLE);
+                                                txtvUsuario.setVisibility(View.VISIBLE);*/
+                                                Intent in = new Intent(LoginActivity.this,MainActivity.class);
+                                                startActivity(in);
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override

@@ -66,13 +66,6 @@ public class ComentarioActivity extends AppCompatActivity {
                             miBundle.putString("nombreProfe",txtvProfesor.getText().toString());
                             in.putExtras(miBundle);
                             startActivity(in);
-
-                            /*
-                            Intent in = new Intent(getApplicationContext(), ProfesorActivity.class);
-                            //getApplicationContext().startActivity(in);
-                            startActivity(in);
-                            /*
-                             */
                         }
                     })
                             .addOnFailureListener(new OnFailureListener() {
