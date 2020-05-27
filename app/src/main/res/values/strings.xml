@@ -43,6 +43,9 @@
     <string name="toastInicioSesion">Ha iniciado sesión</string>
     <string name="toastProblemaConexion">Hubo un problema con la conexion, vuelve a intentarlo</string>
     <string name="toastIngresoNada">Falta ingresar información</string>
+    <string name="toastCambioConstraseña">Se ha cambiado la contraseña con exito</string>
+    <string name="toastRespuestaNoCoincide">La respuesta no coincide</string>
+    <string name="toastNoingresoUsuario">No ha ingresado usuario</string>
 
 
 </resources>

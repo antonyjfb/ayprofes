@@ -90,7 +90,7 @@ public class RecoverActivity extends AppCompatActivity {
                                             nuevaContraseña=edtNuevaContraseña.getText().toString();
 
                                             if (nuevaContraseña.length() < 9) {
-                                                Toast.makeText(getApplicationContext(), "La contraseña debe tener al menos 10 caracteres", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastConstrasena10caracter), Toast.LENGTH_SHORT).show();
                                             }
                                             else {
                                                 Usuario miUsuario = new Usuario(usuario, nuevaContraseña, preguntaAux, respuestaAux);
@@ -101,7 +101,7 @@ public class RecoverActivity extends AppCompatActivity {
                                                        edtRespuestaContraseña.setVisibility(View.GONE);
                                                         edtNuevaContraseña.setVisibility(View.GONE);
                                                         btnNuevaContraseña.setVisibility(View.GONE);
-                                                        txtvPregunta.setText("Se ha cambiado la contraseña con exito");
+                                                        txtvPregunta.setText(getResources().getString(R.string.toastCambioConstraseña));
                                                         btnOk.setVisibility(View.VISIBLE);
                                                         btnOk.setOnClickListener(new View.OnClickListener() {
                                                             @Override
@@ -116,14 +116,14 @@ public class RecoverActivity extends AppCompatActivity {
                                                 }).addOnFailureListener(new OnFailureListener() {
                                                     @Override
                                                     public void onFailure(@NonNull Exception e) {
-                                                        Toast.makeText(getApplicationContext(), "Fallo la conexión, vuelve a intentarlo", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastProblemaConexion), Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
                                             }
                                         }
                                         else
                                         {
-                                            Toast.makeText(getApplicationContext(), "La respuesta no coincide", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.toastRespuestaNoCoincide), Toast.LENGTH_SHORT).show();
                                         }
 
                                     }
@@ -132,14 +132,14 @@ public class RecoverActivity extends AppCompatActivity {
                             }
                             else
                             {
-                                Toast.makeText(getApplicationContext(), "Ese nombre de usuario no existe", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastNombreUsuarioNoExiste), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "No ha ingresado usuario", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastNoingresoUsuario), Toast.LENGTH_SHORT).show();
                 }
 
             }

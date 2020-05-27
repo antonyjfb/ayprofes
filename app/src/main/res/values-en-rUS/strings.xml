@@ -32,7 +32,7 @@
     <string name="toastIngreseDatos">Please enter the data</string>
     <string name="toastSeCerroSesion">The sesion is closed</string>
     <string name="toastHaOcurridoError">A problem was found, try again please</string>
-    <string name="toastHainiciadoSesion">" You are logged in, Welcome :"</string>
+    <string name="toastHainiciadoSesion">You are logged in, Welcome :</string>
     <string name="toastRequiereSesionComentar">It´s necesary log in  for comment</string>
     <string name="toastNombreUsuarioExiste">This username already exist</string>
     <string name="toastNombreUsuario10caracter">The username must has at least 10 characters</string>
@@ -44,4 +44,7 @@
     <string name="toastInicioSesion">You are logged in</string>
     <string name="toastProblemaConexion">" There was a problem with the connection, please try again."</string>
     <string name="toastIngresoNada">You need to enter information</string>
+    <string name="toastCambioConstraseña">Password successfully changed</string>
+    <string name="toastRespuestaNoCoincide">The answer does not match</string>
+    <string name="toastNoingresoUsuario">You did not enter any username</string>
 </resources>
