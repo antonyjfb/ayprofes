@@ -150,7 +150,7 @@ public class ProfesorActivity extends AppCompatActivity {
             });
     } catch (Exception e) {
         e.printStackTrace();
-        Toast.makeText(getApplicationContext(), "Ha ocurrido un error, intente de nuevo", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastHaOcurridoError), Toast.LENGTH_SHORT).show();
     }
 
         Query query=db.collection("Profesores").document(nombreProfe).collection("Comentarios");
@@ -186,7 +186,7 @@ public class ProfesorActivity extends AppCompatActivity {
                                         }
 
                                         if(usuarioAux==null) {
-                                            Toast.makeText(getApplicationContext(), "Se requiere iniciar sesión para comentar", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastRequiereSesionComentar), Toast.LENGTH_SHORT).show();
                                         }
                                         else
                                         {
@@ -205,7 +205,7 @@ public class ProfesorActivity extends AppCompatActivity {
                             });
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Ha ocurrido un error, intente de nuevo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastHaOcurridoError), Toast.LENGTH_SHORT).show();
                 }
 
             }

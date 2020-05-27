@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                 contraseña=edtContraseña.getText().toString();
 
                 db = FirebaseFirestore.getInstance();
-                String id=edtUsuario.getText().toString();
+                final String id=edtUsuario.getText().toString();
 
 
                 try {
@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String contraseñaAux = documentSnapshot.getString("contraseña");
                                 try {
                                     if (contraseñaAux.equals(contraseña)) {
-                                        Toast.makeText(getApplicationContext(), "Ha iniciado sesion, Bienvenido "+usuarioAux, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastHainiciadoSesion) +usuarioAux, Toast.LENGTH_SHORT).show();
 
                                         Usuario miLinea = new Usuario(usuario);
                                         db.collection("Enlinea").document(usuario).set(miLinea).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -105,22 +105,22 @@ public class LoginActivity extends AppCompatActivity {
 
 
                                     } else {
-                                        Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastWrongPass), Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (Exception e) {
                                     e.printStackTrace();
-                                    Toast.makeText(getApplicationContext(), "Ese nombre de usuario no existe", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastNombreUsuarioNoExiste), Toast.LENGTH_SHORT).show();
                                 }
                             }
                             else
                             {
-                                Toast.makeText(getApplicationContext(), "Ese nombre de usuario no existe", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastNombreUsuarioNoExiste), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Ingrese los datos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastIngreseDatos), Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -155,7 +155,7 @@ public class LoginActivity extends AppCompatActivity {
                 db.collection("Enlinea").document(txtvUsuario.getText().toString()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(getApplicationContext(), "Se ha cerrado sesión", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastSeCerroSesion), Toast.LENGTH_SHORT).show();
 
                         btnCerrar.setVisibility(View.GONE);
                         txtvUsuario.setVisibility(View.GONE);
@@ -220,7 +220,7 @@ public class LoginActivity extends AppCompatActivity {
                     });
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Ha ocurrido un error, intente de nuevo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastHaOcurridoError), Toast.LENGTH_SHORT).show();
         }
         /*
         db = FirebaseFirestore.getInstance();

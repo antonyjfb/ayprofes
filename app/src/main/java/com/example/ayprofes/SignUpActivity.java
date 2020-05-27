@@ -103,7 +103,7 @@ public class SignUpActivity extends AppCompatActivity {
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                             String usuarioAux = documentSnapshot.getString("nombre");
                             if (usuario.equalsIgnoreCase(usuarioAux)) {
-                                Toast.makeText(getApplicationContext(), "Ese nombre de usuario ya existe", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastNombreUsuarioExiste), Toast.LENGTH_SHORT).show();
                             }
                             else {
 
@@ -111,14 +111,14 @@ public class SignUpActivity extends AppCompatActivity {
 
                                 //Validacion del nombre de usuario
                                 if (usuario.length() < 9) {
-                                    Toast.makeText(getApplicationContext(), "El nombre de usuarios debe tener al menos 10 caracteres", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastNombreUsuario10caracter), Toast.LENGTH_SHORT).show();
                                 } else {
                                     llaveNombre = true;
                                 }
 
                                 //Validacion para el formato de la contraseña
                                 if (contraseña.length() < 9) {
-                                    Toast.makeText(getApplicationContext(), "La contraseña debe tener al menos 10 caracteres", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastConstrasena10caracter), Toast.LENGTH_SHORT).show();
                                 } else {
                                     llaveContraseña = true;
                                 }
@@ -127,19 +127,19 @@ public class SignUpActivity extends AppCompatActivity {
                                 if (contraseña.equals(contraseña2)) {
                                     llaveContraseña2 = true;
                                 } else {
-                                    Toast.makeText(getApplicationContext(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastContraseñasNoCoinciden), Toast.LENGTH_SHORT).show();
                                 }
 
                                 //Validar que selecciono una pregunta
                                 if(pregunta.equals("Seleccione")) {
-                                    Toast.makeText(getApplicationContext(), "Selecione una pregunta", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastSeleccionePregunta), Toast.LENGTH_SHORT).show();
                                 } else {
                                     llavePregunta=true;
                                 }
 
                                 //Validar que respondio su pregunta
                                 if (respuesta.length() < 1) {
-                                    Toast.makeText(getApplicationContext(), "No has contestardo  la pregunta", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastNoContestadaPregunta), Toast.LENGTH_SHORT).show();
                                 } else {
                                     llaveRespuesta = true;
                                 }
@@ -156,7 +156,7 @@ public class SignUpActivity extends AppCompatActivity {
                                             edtContraseña.setText("");
                                             edtContraseña2.setText("");
                                             edtRespuesta.setText("");
-                                            Toast.makeText(getApplicationContext(), "Se agregaron los datos correctamente", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.toastAgregaronDatosCorrecto), Toast.LENGTH_SHORT).show();
 
                                             //
                                             //Codigo para conectarse
@@ -166,7 +166,7 @@ public class SignUpActivity extends AppCompatActivity {
                                             db.collection("Enlinea").document(usuario).set(miLinea).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
-                                                    Toast.makeText(getApplicationContext(), "Ha iniciado sesión", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastInicioSesion), Toast.LENGTH_SHORT).show();
                                                 }
                                             }).addOnFailureListener(new OnFailureListener() {
                                                 @Override
@@ -175,7 +175,7 @@ public class SignUpActivity extends AppCompatActivity {
                                                 }
                                             });
 
-                                            Toast.makeText(getApplicationContext(), "Se ha iniciado sesión", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastInicioSesion), Toast.LENGTH_SHORT).show();
 
                                             Intent in = new Intent(getApplicationContext(),LoginActivity.class);
                                             startActivity(in);
@@ -186,11 +186,11 @@ public class SignUpActivity extends AppCompatActivity {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
                                             Log.d("Prueba", "Entro en la base de datos");
-                                            Toast.makeText(getApplicationContext(), "Hubo un problema con la conexion, vuelve a intentarlo", Toast.LENGTH_SHORT).show(); }
+                                            Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastProblemaConexion), Toast.LENGTH_SHORT).show(); }
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            Toast.makeText(getApplicationContext(), "Hubo un problema con la conexion, vuelve a intentarlo", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastProblemaConexion), Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 }
@@ -200,7 +200,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "No has ingresado nada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastIngresoNada), Toast.LENGTH_SHORT).show();
                 }
 
 

@@ -26,7 +26,23 @@
     <string name="recuperaciónStringTextViewNueva">Nueva Contraseña</string>
     <string name="materiaString">Materia</string>
     <string name="aceptarString">Aceptar</string>
-
+    <string name="toastWrongPass">Contraseña incorrecta</string>
+    <string name="toastNombreUsuarioNoExiste">Ese nombre de usuario no existe</string>
+    <string name="toastIngreseDatos">Ingrese los datos</string>
+    <string name="toastSeCerroSesion">Se ha cerrado sesión</string>
+    <string name="toastHaOcurridoError">Ha ocurrido un error, intente de nuevo</string>
+    <string name="toastHainiciadoSesion">"Ha iniciado sesion, Bienvenido : "</string>
+    <string name="toastRequiereSesionComentar">Se requiere iniciar sesión para comentar</string>
+    <string name="toastNombreUsuarioExiste">Ese nombre de usuario ya existe</string>
+    <string name="toastNombreUsuario10caracter">El nombre de usuarios debe tener al menos 10 caracteres</string>
+    <string name="toastConstrasena10caracter">La contraseña debe tener al menos 10 caracteres</string>
+    <string name="toastContraseñasNoCoinciden">Las contraseñas no coinciden</string>
+    <string name="toastSeleccionePregunta">Seleccione una pregunta</string>
+    <string name="toastNoContestadaPregunta">No has contestardo  la pregunta</string>
+    <string name="toastAgregaronDatosCorrecto">Se agregaron los datos correctamente</string>
+    <string name="toastInicioSesion">Ha iniciado sesión</string>
+    <string name="toastProblemaConexion">Hubo un problema con la conexion, vuelve a intentarlo</string>
+    <string name="toastIngresoNada">Falta ingresar información</string>
 
 
 </resources>

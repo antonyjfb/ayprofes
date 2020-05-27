@@ -27,4 +27,21 @@
     <string name="recuperaciónStringTextViewNueva">New Password</string>
     <string name="materiaString">Subject</string>
     <string name="aceptarString">OK</string>
+    <string name="toastWrongPass">Wrong Password</string>
+    <string name="toastNombreUsuarioNoExiste">This username doesn\'t exist</string>
+    <string name="toastIngreseDatos">Please enter the data</string>
+    <string name="toastSeCerroSesion">The sesion is closed</string>
+    <string name="toastHaOcurridoError">A problem was found, try again please</string>
+    <string name="toastHainiciadoSesion">" You are logged in, Welcome :"</string>
+    <string name="toastRequiereSesionComentar">It´s necesary log in  for comment</string>
+    <string name="toastNombreUsuarioExiste">This username already exist</string>
+    <string name="toastNombreUsuario10caracter">The username must has at least 10 characters</string>
+    <string name="toastConstrasena10caracter">The password must has at least 10 characters</string>
+    <string name="toastContraseñasNoCoinciden">The passwords do not match</string>
+    <string name="toastSeleccionePregunta">Please select a question</string>
+    <string name="toastNoContestadaPregunta">You haven\'t answered the question</string>
+    <string name="toastAgregaronDatosCorrecto">Datas was successfully added</string>
+    <string name="toastInicioSesion">You are logged in</string>
+    <string name="toastProblemaConexion">" There was a problem with the connection, please try again."</string>
+    <string name="toastIngresoNada">You need to enter information</string>
 </resources>
