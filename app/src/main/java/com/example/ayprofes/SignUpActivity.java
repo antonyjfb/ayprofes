@@ -3,6 +3,8 @@ package com.example.ayprofes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -45,6 +48,7 @@ public class SignUpActivity extends AppCompatActivity {
     boolean llavePregunta;
 
     FirebaseFirestore db;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,7 @@ public class SignUpActivity extends AppCompatActivity {
         edtRespuesta=findViewById(R.id.edtRespuesta);
         btnRegistrar =findViewById(R.id.btnRegistrar);
         spnPreguntas =findViewById(R.id.spnPreguntas);
+        toolbar=findViewById(R.id.toolbar);
 
         //Adaptador del spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.spnPreguntas,android.R.layout.simple_spinner_item);
@@ -209,6 +214,33 @@ public class SignUpActivity extends AppCompatActivity {
                 // startActivity(in);
             }
         });
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+
+        switch (id){
+            case R.id.ab_home:
+                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(in);
+                break;
+            case R.id.ab_login:
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 

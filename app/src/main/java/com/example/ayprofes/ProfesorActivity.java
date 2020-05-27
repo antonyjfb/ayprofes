@@ -3,6 +3,8 @@ package com.example.ayprofes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +39,8 @@ public class ProfesorActivity extends AppCompatActivity {
     RatingBar facilidadRatingBarProfe, claridadRatingBarProfe, ayudaRatingBarProfe, cargaRatingBarProfe, recomendacionRatingBarProfe;
     FirebaseFirestore db;
 
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +62,7 @@ public class ProfesorActivity extends AppCompatActivity {
         txtvClaridadCalif=findViewById(R.id.textvClaridadCalif);
         txtvFacilidadCalif=findViewById(R.id.textvFacilidadCalif);
 
+        toolbar=findViewById(R.id.toolbar);
 
         facilidadRatingBarProfe=findViewById(R.id.facilidadRatingBarProfe);
         claridadRatingBarProfe=findViewById(R.id.claridadRatingBarProfe);
@@ -210,6 +216,9 @@ public class ProfesorActivity extends AppCompatActivity {
 
             }
         });
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     @Override
@@ -222,6 +231,30 @@ public class ProfesorActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adaptador.stopListening();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+
+        switch (id){
+            case R.id.ab_home:
+                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(in);
+                break;
+            case R.id.ab_login:
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

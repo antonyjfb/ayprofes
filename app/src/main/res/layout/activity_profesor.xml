@@ -7,6 +7,9 @@
     android:background="@mipmap/ic_fondo"
     tools:context=".ProfesorActivity">
 
+    <include
+        layout="@layout/appbar" />
+
     <TextView
         android:id="@+id/txtvClaridad"
         android:layout_width="wrap_content"
@@ -76,13 +79,14 @@
         android:id="@+id/txtvProfesor"
         android:layout_width="321dp"
         android:layout_height="49dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="76dp"
         android:text="@string/comentarioStringTextViewNombre"
         android:textColor="@color/colorPrimaryText"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnAñadir"
@@ -180,16 +184,6 @@
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recomendacionRatingBarProfe" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginLeft="152dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_ay_foreground" />
 
     <TextView
         android:id="@+id/textvFacilidadCalif"

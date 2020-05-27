@@ -1,8 +1,13 @@
 package com.example.ayprofes;
 
+import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +16,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
     String contraseña;
     String usuarioAux;
 
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         btnCerrar=findViewById(R.id.btnCerrar);
         linkOlvide = findViewById(R.id.txtvOlvide);
         txtvUsuario=findViewById(R.id.txtvUsuario);
+        toolbar=findViewById(R.id.toolbar);
 
         ComprobarLinea();
        /* SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
@@ -78,7 +89,6 @@ public class LoginActivity extends AppCompatActivity {
                                 try {
                                     if (contraseñaAux.equals(contraseña)) {
                                         Toast.makeText(getApplicationContext(), "Ha iniciado sesion, Bienvenido "+usuarioAux, Toast.LENGTH_SHORT).show();
-
                                         Usuario miLinea = new Usuario(usuario);
                                         db.collection("Enlinea").document(usuario).set(miLinea).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
@@ -177,6 +187,9 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     public void ComprobarLinea()
@@ -252,5 +265,31 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 */
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar,menu);
+
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+
+        switch (id){
+            case R.id.ab_home:
+                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(in);
+                break;
+            case R.id.ab_login:
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
