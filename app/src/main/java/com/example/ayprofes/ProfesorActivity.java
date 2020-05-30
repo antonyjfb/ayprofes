@@ -257,4 +257,14 @@ public class ProfesorActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent in = new Intent(getApplicationContext(), BuscarActivity.class);
+        Bundle miBundle=new Bundle();
+        miBundle.putString("nombreProfe",txtvProfesor.getText().toString());
+        in.putExtras(miBundle);
+        startActivity(in);
+    }
 }

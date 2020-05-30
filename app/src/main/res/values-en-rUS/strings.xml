@@ -18,7 +18,7 @@
     <string name="comentarioStringEditTextComentario">" Write comment..."</string>
     <string name="comentarioStringButtonEnviar">Send</string>
     <string name="comentarioStringButtonAñadir">Add comment</string>
-    <string name="recuperaciónStringTextViewInstrucciones">Enter your username and the password will be sent to your email</string>
+    <string name="recuperaciónStringTextViewInstrucciones">Enter your username and follow the instructions to change your password</string>
     <string name="signUpStringHintRespuesta">Answer</string>
     <string name="singUpStringHintContraseña2">Confirm Password</string>
     <string name="signUpStringButtonRegistrar">Sign Up</string>
