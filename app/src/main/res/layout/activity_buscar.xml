@@ -34,26 +34,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spnMaterias"
-        android:layout_width="197dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.765"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvBuscarProfesor"
         android:layout_width="match_parent"
         android:layout_height="431dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="188dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spnMaterias"
-        app:layout_constraintVertical_bias="0.16"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="0dp" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
