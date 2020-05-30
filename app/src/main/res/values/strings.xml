@@ -46,6 +46,7 @@
     <string name="toastCambioConstraseña">Se ha cambiado la contraseña con exito</string>
     <string name="toastRespuestaNoCoincide">La respuesta no coincide</string>
     <string name="toastNoingresoUsuario">No ha ingresado usuario</string>
+    <string name="loginStringButtonCerrarSesion">Cerrar Sesión</string>
 
 
 </resources>

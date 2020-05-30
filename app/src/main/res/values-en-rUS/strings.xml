@@ -47,4 +47,5 @@
     <string name="toastCambioConstraseña">Password successfully changed</string>
     <string name="toastRespuestaNoCoincide">The answer does not match</string>
     <string name="toastNoingresoUsuario">You did not enter any username</string>
+    <string name="loginStringButtonCerrarSesion">Log out</string>
 </resources>
