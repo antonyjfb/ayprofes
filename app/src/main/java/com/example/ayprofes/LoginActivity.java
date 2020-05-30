@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnCerrar;
     TextView linkOlvide;
     TextView txtvUsuario;
+    private Toolbar toolbar;
 
     FirebaseFirestore db;
 
@@ -50,8 +54,9 @@ public class LoginActivity extends AppCompatActivity {
         btnCerrar=findViewById(R.id.btnCerrar);
         linkOlvide = findViewById(R.id.txtvOlvide);
         txtvUsuario=findViewById(R.id.txtvUsuario);
+        toolbar=findViewById(R.id.toolbar);
 
-        ComprobarLinea();
+
        /* SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
         usuario=sharedPreferences.getString("Usuario","No hay info");
 */
@@ -157,6 +162,7 @@ public class LoginActivity extends AppCompatActivity {
                 edtContraseña.setText("");
 
 
+
                 /*db = FirebaseFirestore.getInstance();
                 db.collection("Enlinea").document(txtvUsuario.getText().toString()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -183,15 +189,20 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-    public void ComprobarLinea()
+    public void ComprobarLinea(final Menu menu)
     {
         SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
         String usuarioShared=sharedPreferences.getString("Usuario","No hay info");
         if(usuarioShared=="No hay info"){
                 btnCerrar.setVisibility(View.GONE);
                 txtvUsuario.setVisibility(View.GONE);
+            MenuItem user = menu.getItem(1);
+            user.setIcon(R.drawable.ic_person_outline_black_24dp);
 
             }
             else
@@ -203,7 +214,36 @@ public class LoginActivity extends AppCompatActivity {
                 linkOlvide.setVisibility(View.GONE);
                 txtvUsuario.setText(usuarioShared);
                 txtvUsuario.setEnabled(false);
+
+                MenuItem user = menu.getItem(1);
+                user.setIcon(R.drawable.ic_person_black_24dp);
             }
 
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar,menu);
+        ComprobarLinea(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+
+        switch (id){
+            case R.id.ab_home:
+                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(in);
+                break;
+            case R.id.ab_login:
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
