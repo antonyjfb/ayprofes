@@ -3,6 +3,8 @@
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.ayprofes.RecyclerViews.MuestraProfesor;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,6 +27,7 @@ public class ComentarioActivity extends AppCompatActivity {
     FirebaseFirestore db;
     MuestraProfesor profe;
     TextView txtvProfesor;
+    private Toolbar toolbar;
 
     //Antony se la come
     //x2
@@ -33,6 +37,7 @@ public class ComentarioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comentario); //activity main
+        toolbar=findViewById(R.id.toolbar);
         final RatingBar facilidadRatingBar, claridadRatingBar, ayudaRatingBar, workloadRatingBar, recommendationRatingBar;
         final EditText comentarioBox;
         TextView nombreDelProfesor=findViewById(R.id.txtvProfesor);
@@ -66,13 +71,6 @@ public class ComentarioActivity extends AppCompatActivity {
                             miBundle.putString("nombreProfe",txtvProfesor.getText().toString());
                             in.putExtras(miBundle);
                             startActivity(in);
-
-                            /*
-                            Intent in = new Intent(getApplicationContext(), ProfesorActivity.class);
-                            //getApplicationContext().startActivity(in);
-                            startActivity(in);
-                            /*
-                             */
                         }
                     })
                             .addOnFailureListener(new OnFailureListener() {
@@ -84,5 +82,32 @@ public class ComentarioActivity extends AppCompatActivity {
 
             }
         });
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+
+        switch (id){
+            case R.id.ab_home:
+                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(in);
+                break;
+            case R.id.ab_login:
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

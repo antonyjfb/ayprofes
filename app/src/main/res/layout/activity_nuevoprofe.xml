@@ -7,6 +7,8 @@
     android:background="@mipmap/ic_fondo"
     android:layout_height="match_parent">
 
+    <include layout="@layout/appbar"/>
+
     <EditText
         android:id="@+id/edtNombreMateria"
         android:layout_width="345dp"
