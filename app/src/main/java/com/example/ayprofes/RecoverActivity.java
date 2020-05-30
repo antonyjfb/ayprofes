@@ -2,6 +2,8 @@ package com.example.ayprofes;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -25,6 +28,7 @@ public class RecoverActivity extends AppCompatActivity {
     EditText edtNuevaContraseña;
     TextView txtvPregunta;
     Button btnOk;
+    private Toolbar toolbar;
 
     //FireStore
     FirebaseFirestore db;
@@ -50,6 +54,7 @@ public class RecoverActivity extends AppCompatActivity {
         edtNuevaContraseña = findViewById(R.id.edtNuevaContraseña);
         txtvPregunta = findViewById(R.id.txtvPregunta);
         btnOk=findViewById(R.id.btnOK);
+        toolbar=findViewById(R.id.toolbar);
 
         btnVerificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,6 +150,32 @@ public class RecoverActivity extends AppCompatActivity {
             }
         });
 
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+
+        switch (id){
+            case R.id.ab_home:
+                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(in);
+                break;
+            case R.id.ab_login:
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 

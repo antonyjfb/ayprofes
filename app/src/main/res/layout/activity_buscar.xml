@@ -7,6 +7,9 @@
     android:background="@mipmap/ic_fondo"
     android:layout_height="match_parent">
 
+    <include
+        layout="@layout/appbar" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="83dp"
@@ -23,7 +26,7 @@
         android:id="@+id/searchView"
         android:layout_width="324dp"
         android:layout_height="45dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="68dp"
         android:textColor="@color/colorPrimaryText"
         android:textColorHint="@color/colorPrimaryText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,6 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spnMaterias"
         app:layout_constraintVertical_bias="0.16"
         tools:layout_editor_absoluteX="0dp" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,10 @@
     android:background="@mipmap/ic_fondo"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/appbar" />
+
     <EditText
         android:id="@+id/edtRespuesta"
         android:layout_width="350dp"
@@ -25,7 +29,7 @@
         android:id="@+id/edtUsuario"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="104dp"
         android:hint="@string/loginStringHintUsuario"
         android:inputType="textEmailAddress"
         android:textColor="@color/colorPrimaryText"
@@ -33,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edtContraseña"
@@ -85,14 +89,5 @@
         app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtContraseña2" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_ay_foreground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

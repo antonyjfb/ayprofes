@@ -3,6 +3,8 @@ package com.example.ayprofes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.ayprofes.RecyclerViews.MuestraProfesor;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,7 +28,7 @@ public class NuevoProfeActivity extends AppCompatActivity {
 
     FirebaseFirestore db;
     MuestraProfesor profe;
-
+    private Toolbar toolbar;
 
     //Antony se la come
 
@@ -37,6 +40,7 @@ public class NuevoProfeActivity extends AppCompatActivity {
         final EditText cuadroNombre, cuadroMateria;
         cuadroMateria = findViewById(R.id.edtNombreMateria);
         cuadroNombre = findViewById(R.id.edtNombreProfe);
+        toolbar=findViewById(R.id.toolbar);
 
         Button submitButton = (Button) findViewById(R.id.btnEnviarComentario);
         // perform click event on button
@@ -55,5 +59,32 @@ public class NuevoProfeActivity extends AppCompatActivity {
                 v.getContext().startActivity(in);
             }
         });
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+
+        switch (id){
+            case R.id.ab_home:
+                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(in);
+                break;
+            case R.id.ab_login:
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

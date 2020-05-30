@@ -1,5 +1,7 @@
 package com.example.ayprofes;
 
+import androidx.appcompat.widget.Toolbar;
+
 public class Usuario {
     public Usuario(String nombre) {
         this.nombre = nombre;
