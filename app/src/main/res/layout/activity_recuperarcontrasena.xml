@@ -28,7 +28,7 @@
         android:id="@+id/edtRecuperarUsuario"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="28dp"
         android:hint="@string/loginStringHintUsuario"
         android:inputType="textEmailAddress"
         android:textColor="@color/colorPrimaryText"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txtvInstrucciones" />
+        app:layout_constraintTop_toBottomOf="@+id/txtvInstrucciones" />
 
     <Button
         android:id="@+id/btnVerificar"
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
         android:hint="@string/recuperaciónStringTextViewNueva"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:textColor="@color/colorPrimaryText"
         android:textColorHint="@color/colorPrimaryText"
         android:visibility="invisible"
