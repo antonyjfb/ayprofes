@@ -6,7 +6,9 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,6 +23,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private Menu menu;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         btnBuscar = findViewById(R.id.btnMainBuscar);
         btnLogin = findViewById(R.id.btnMainLogin);
         btnAgregar = findViewById(R.id.btnAgregarProfe);
+        menu=findViewById(R.id.menu);
         toolbar=findViewById(R.id.toolbar);
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar,menu);
+        ComprobarLinea(menu);
         return true;
     }
 
@@ -79,5 +84,20 @@ public class MainActivity extends AppCompatActivity {
 
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void ComprobarLinea(final Menu menu)
+    {
+        SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
+        String usuarioShared=sharedPreferences.getString("Usuario","No hay info");
+        if(usuarioShared=="No hay info"){
+            MenuItem user = menu.getItem(1);
+            user.setIcon(R.drawable.ic_person_outline_black_24dp);
+        }
+        else
+        {
+            MenuItem user = menu.getItem(1);
+            user.setIcon(R.drawable.ic_person_black_24dp);
+        }
+
     }
 }

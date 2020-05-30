@@ -1,6 +1,8 @@
 package com.example.ayprofes;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -67,6 +69,7 @@ public class NuevoProfeActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar,menu);
+        ComprobarLinea(menu);
         return true;
     }
 
@@ -86,5 +89,20 @@ public class NuevoProfeActivity extends AppCompatActivity {
 
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void ComprobarLinea(final Menu menu)
+    {
+        SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
+        String usuarioShared=sharedPreferences.getString("Usuario","No hay info");
+        if(usuarioShared=="No hay info"){
+            MenuItem user = menu.getItem(1);
+            user.setIcon(R.drawable.ic_person_outline_black_24dp);
+        }
+        else
+        {
+            MenuItem user = menu.getItem(1);
+            user.setIcon(R.drawable.ic_person_black_24dp);
+        }
+
     }
 }
