@@ -8,7 +8,6 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/include"
         layout="@layout/appbar" />
 
     <EditText
@@ -45,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
         android:hint="@string/loginStringHintContraseña"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:textColor="@color/colorPrimaryText"
         android:textColorHint="@color/colorPrimaryText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:hint="@string/singUpStringHintContraseña2"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:textColor="@color/colorPrimaryText"
         android:textColorHint="@color/colorPrimaryText"
         app:layout_constraintEnd_toEndOf="parent"
