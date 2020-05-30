@@ -1,17 +1,11 @@
 package com.example.ayprofes;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.SearchView;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,17 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ayprofes.RecyclerViews.AdaptadorMuestraProfesor;
 import com.example.ayprofes.RecyclerViews.MuestraProfesor;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -41,7 +27,6 @@ public class BuscarActivity extends AppCompatActivity {
     RecyclerView rcvBuscarProfesor;
     FirebaseFirestore db;
     AdaptadorMuestraProfesor adaptador;
-    Spinner spnMaterias;
     SearchView buscador;
     DatabaseReference databaseReference;
     private Toolbar toolbar;
@@ -79,24 +64,10 @@ public class BuscarActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Ha ocurrido un error, intente de nuevo", Toast.LENGTH_SHORT).show();
         }*/
         //Adaptador para el spiner
-        spnMaterias = findViewById(R.id.spnMaterias);
+
         buscador=findViewById(R.id.searchView);
-        ArrayAdapter<CharSequence> adaptadorSpinnerMaterias=ArrayAdapter.createFromResource(this,R.array.spnMaterias,android.R.layout.simple_spinner_item);
-        spnMaterias.setAdapter(adaptadorSpinnerMaterias);
+
         arrayList = new ArrayList<>();
-        spnMaterias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //
-                //Codigo para realizar otra consulta a la base de datos, ahora con lo que el usuario selecciono
-                //
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);

@@ -26,18 +26,17 @@ public class AdaptadorMuestraComentario extends FirestoreRecyclerAdapter<Muestra
 
     @Override
     protected void onBindViewHolder(@NonNull MuestraComentarioViewHolder holder, int i, @NonNull MuestraComentario muestraComentario) {
+        //Coloca el comentario obtenido de la base de datos en el cardview
         holder.txtvCVComentario.setText(muestraComentario.getComentario());
     }
 
     @NonNull
     @Override
     public MuestraComentarioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //Infla el cardview en el reciclerview
         View vista= LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_comentario,parent,false);
-
         return new MuestraComentarioViewHolder(vista);
     }
-
-    //ArrayList<MuestraComentario> comentarios;
 
 
 

@@ -24,6 +24,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ComentarioActivity extends AppCompatActivity {
 
+    private long backPressedTime;
+
     FirebaseFirestore db;
     MuestraProfesor profe;
     TextView txtvProfesor;
@@ -110,4 +112,6 @@ public class ComentarioActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

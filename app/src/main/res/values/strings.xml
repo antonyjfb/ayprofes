@@ -21,7 +21,7 @@
     <string name="comentarioStringEditTextComentario">Escribe un comentario...</string>
     <string name="comentarioStringButtonEnviar">Enviar</string>
     <string name="comentarioStringButtonAñadir">Añadir comentario</string>
-    <string name="recuperaciónStringTextViewInstrucciones">Escribe tu nombre de usuario y se enviara la contraseña a tu correo</string>
+    <string name="recuperaciónStringTextViewInstrucciones">Escribe tu nombre de usuario y sigue las intrucciones para cambiar tu contraseña</string>
     <string name="recuperaciónStringButtonCambiar">Cambiar</string>
     <string name="recuperaciónStringTextViewNueva">Nueva Contraseña</string>
     <string name="materiaString">Materia</string>
@@ -46,6 +46,7 @@
     <string name="toastCambioConstraseña">Se ha cambiado la contraseña con exito</string>
     <string name="toastRespuestaNoCoincide">La respuesta no coincide</string>
     <string name="toastNoingresoUsuario">No ha ingresado usuario</string>
+    <string name="loginStringButtonCerrarSesion">Cerrar Sesión</string>
 
 
 </resources>
