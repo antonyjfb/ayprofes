@@ -1,6 +1,8 @@
 package com.example.ayprofes;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -80,28 +82,14 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastHainiciadoSesion) +usuarioAux, Toast.LENGTH_SHORT).show();
 
                                         Usuario miLinea = new Usuario(usuario);
-                                        db.collection("Enlinea").document(usuario).set(miLinea).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void aVoid) {
-                                                /*edtUsuario.setVisibility(View.GONE);
-                                                edtContraseña.setVisibility(View.GONE);
-                                                btnEntrar.setVisibility(View.GONE);
-                                                btnLogin.setVisibility(View.GONE);
-                                                linkOlvide.setVisibility(View.GONE);
-                                                txtvUsuario.setText(usuario);
-                                                txtvUsuario.setEnabled(false);
 
-                                                btnCerrar.setVisibility(View.VISIBLE);
-                                                txtvUsuario.setVisibility(View.VISIBLE);*/
-                                                Intent in = new Intent(LoginActivity.this,MainActivity.class);
-                                                startActivity(in);
-                                            }
-                                        }).addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-
-                                            }
-                                        });
+                                        SharedPreferences sharedPreferences = getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
+                                        String usuarioShared=edtUsuario.getText().toString();
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("Usuario",usuarioShared);
+                                        editor.commit();
+                                        Intent in = new Intent(LoginActivity.this,MainActivity.class);
+                                        startActivity(in);
 
 
                                     } else {
@@ -146,11 +134,14 @@ public class LoginActivity extends AppCompatActivity {
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* SharedPreferences sharedPreferences = getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
+
+
+                SharedPreferences sharedPreferences = getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("Usuario","No hay nadie chavo");
+                editor.clear();
                 editor.commit();
-*/
+
+
                 db = FirebaseFirestore.getInstance();
                 db.collection("Enlinea").document(txtvUsuario.getText().toString()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -181,76 +172,23 @@ public class LoginActivity extends AppCompatActivity {
 
     public void ComprobarLinea()
     {
-        db = FirebaseFirestore.getInstance();
-
-        try {
-            db.collection("Enlinea")
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    usuarioAux =document.getData().get("nombre").toString();
-
-                                    Log.d("Prueba",usuarioAux);
-                                    }
-
-                                if(usuarioAux==null) {
-                                    btnCerrar.setVisibility(View.GONE);
-                                    txtvUsuario.setVisibility(View.GONE);
-
-                                }
-                                else
-                                {
-                                    edtUsuario.setVisibility(View.GONE);
-                                    edtContraseña.setVisibility(View.GONE);
-                                    btnEntrar.setVisibility(View.GONE);
-                                    btnLogin.setVisibility(View.GONE);
-                                    linkOlvide.setVisibility(View.GONE);
-                                    txtvUsuario.setText(usuarioAux);
-                                    txtvUsuario.setEnabled(false);
-                                }
-
-                            } else {
-                                Log.w("Hola", "Error getting documents.", task.getException());
-                            }
-                        }
-                    });
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastHaOcurridoError), Toast.LENGTH_SHORT).show();
-        }
-        /*
-        db = FirebaseFirestore.getInstance();
-        db.collection("Enlinea").document().get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                String usuarioAux = documentSnapshot.getString("nombre");
-                Toast.makeText(getApplicationContext(), usuarioAux, Toast.LENGTH_SHORT).show();
-                if(usuarioAux==null) {
-                    btnCerrar.setVisibility(View.GONE);
-                    txtvUsuario.setVisibility(View.GONE);
-
-                }
-                else
-                {
-                    edtUsuario.setVisibility(View.GONE);
-                    edtContraseña.setVisibility(View.GONE);
-                    btnEntrar.setVisibility(View.GONE);
-                    btnLogin.setVisibility(View.GONE);
-                    linkOlvide.setVisibility(View.GONE);
-                    txtvUsuario.setText(usuarioAux);
-                    txtvUsuario.setEnabled(false);
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
+        SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
+        String usuarioShared=sharedPreferences.getString("Usuario","No hay info");
+        if(usuarioShared=="No hay info"){
+                btnCerrar.setVisibility(View.GONE);
+                txtvUsuario.setVisibility(View.GONE);
 
             }
-        });
-*/
+            else
+            {
+                edtUsuario.setVisibility(View.GONE);
+                edtContraseña.setVisibility(View.GONE);
+                btnEntrar.setVisibility(View.GONE);
+                btnLogin.setVisibility(View.GONE);
+                linkOlvide.setVisibility(View.GONE);
+                txtvUsuario.setText(usuarioShared);
+                txtvUsuario.setEnabled(false);
+            }
+
     }
 }
