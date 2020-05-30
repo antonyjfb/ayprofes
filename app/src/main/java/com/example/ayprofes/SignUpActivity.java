@@ -1,7 +1,9 @@
 package com.example.ayprofes;
 
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -159,17 +161,14 @@ public class SignUpActivity extends AppCompatActivity {
 
                                         public void onSuccess(Void aVoid) {
 
-                                            edtUsuario.setText("");
-                                            edtContraseña.setText("");
-                                            edtContraseña2.setText("");
-                                            edtRespuesta.setText("");
+
                                             Toast.makeText(getApplicationContext(), getResources().getString(R.string.toastAgregaronDatosCorrecto), Toast.LENGTH_SHORT).show();
 
                                             //
                                             //Codigo para conectarse
                                             //
 
-                                            Usuario miLinea = new Usuario(usuario);
+                                            /*Usuario miLinea = new Usuario(usuario);
                                             db.collection("Enlinea").document(usuario).set(miLinea).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
@@ -180,10 +179,18 @@ public class SignUpActivity extends AppCompatActivity {
                                                 public void onFailure(@NonNull Exception e) {
 
                                                 }
-                                            });
+                                            });*/
 
                                             Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastInicioSesion), Toast.LENGTH_SHORT).show();
-
+                                            SharedPreferences sharedPreferences = getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
+                                            String usuarioShared=edtUsuario.getText().toString();
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString("Usuario",usuarioShared);
+                                            editor.commit();
+                                            edtUsuario.setText("");
+                                            edtContraseña.setText("");
+                                            edtContraseña2.setText("");
+                                            edtRespuesta.setText("");
                                             Intent in = new Intent(getApplicationContext(),LoginActivity.class);
                                             startActivity(in);
 

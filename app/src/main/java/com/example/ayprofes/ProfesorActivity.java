@@ -1,6 +1,8 @@
 package com.example.ayprofes;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -177,7 +179,7 @@ public class ProfesorActivity extends AppCompatActivity {
 
                 db = FirebaseFirestore.getInstance();
 
-                try {
+                /*try {
                     db.collection("Enlinea")
                             .get()
                             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -212,8 +214,21 @@ public class ProfesorActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastHaOcurridoError), Toast.LENGTH_SHORT).show();
+                }*/
+                SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
+                String usuarioShared=sharedPreferences.getString("Usuario","No hay info");
+                if(usuarioShared=="No hay info") {
+                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastRequiereSesionComentar), Toast.LENGTH_SHORT).show();
                 }
-
+                else
+                {
+                    Intent in = new Intent(getApplicationContext(), ComentarioActivity.class);
+                    Bundle bundle = getIntent().getExtras();
+                    String nombreProfe = bundle.getString("nombreProfe");
+                    Log.d("Transito", nombreProfe);
+                    in.putExtra("nombreProfe", nombreProfe);
+                    startActivity(in);
+                }
             }
         });
 

@@ -140,9 +140,24 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.clear();
                 editor.commit();
+                Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastSeCerroSesion), Toast.LENGTH_SHORT).show();
+
+                btnCerrar.setVisibility(View.GONE);
+                txtvUsuario.setVisibility(View.GONE);
+
+                edtUsuario.setVisibility(View.VISIBLE);
+                edtContraseña.setVisibility(View.VISIBLE);
+                btnEntrar.setVisibility(View.VISIBLE);
+                btnLogin.setVisibility(View.VISIBLE);
+                linkOlvide.setVisibility(View.VISIBLE);
+                txtvUsuario.setText("");
+                txtvUsuario.setEnabled(true);
+
+                edtUsuario.setText("");
+                edtContraseña.setText("");
 
 
-                db = FirebaseFirestore.getInstance();
+                /*db = FirebaseFirestore.getInstance();
                 db.collection("Enlinea").document(txtvUsuario.getText().toString()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -162,7 +177,7 @@ public class LoginActivity extends AppCompatActivity {
                         edtUsuario.setText("");
                         edtContraseña.setText("");
                     }
-                });
+                });*/
 
 
 
