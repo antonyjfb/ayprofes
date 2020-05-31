@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ayprofes.ProfesorActivity;
+import com.example.ayprofes.ManejoProfesores.ProfesorActivity;
 import com.example.ayprofes.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -32,10 +32,11 @@ public class AdaptadorMuestraProfesor extends FirestoreRecyclerAdapter<MuestraPr
     @Override
     protected void onBindViewHolder(@NonNull MuestraProfeViewHolder holder, int position, @NonNull final MuestraProfesor muestraProfesor) {
 
-        //holder.txtvCVNombre.setText(muestraProfesor.getNombre());
+       //Asigna los datos al cardview
         holder.txtvCVMateria.setText("Materia: "+muestraProfesor.getMateria());
         holder.txtvCVCalificacion.setText("Calificación: "+String.valueOf(muestraProfesor.getCalificacion()));
         holder.btnCVPerfil.setText(muestraProfesor.getNombre());
+        //Método de manejo del botón de profesor en cada cardview
         holder.btnCVPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +48,7 @@ public class AdaptadorMuestraProfesor extends FirestoreRecyclerAdapter<MuestraPr
         });
     }
 
+    //Infla los cardview
     @NonNull
     @Override
     public MuestraProfeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -55,7 +57,7 @@ public class AdaptadorMuestraProfesor extends FirestoreRecyclerAdapter<MuestraPr
     }
 
     public class MuestraProfeViewHolder extends RecyclerView.ViewHolder{
-        //TextView txtvCVNombre;
+        //Asigna los atributos al cardview
         TextView txtvCVMateria;
         TextView txtvCVCalificacion;
         Button btnCVPerfil;
@@ -63,7 +65,6 @@ public class AdaptadorMuestraProfesor extends FirestoreRecyclerAdapter<MuestraPr
         public MuestraProfeViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            //txtvCVNombre=itemView.findViewById(R.id.txtvCVNombre);
             txtvCVMateria=itemView.findViewById(R.id.txtvCVMateria);
             txtvCVCalificacion=itemView.findViewById(R.id.txtvCVCalificacion);
             btnCVPerfil=itemView.findViewById(R.id.btnCVPerfil);

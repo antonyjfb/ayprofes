@@ -1,4 +1,4 @@
-package com.example.ayprofes;
+package com.example.ayprofes.ManejoUsuarios;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +16,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.ayprofes.MainActivity;
+import com.example.ayprofes.ManejoUsuarios.LoginActivity;
+import com.example.ayprofes.ManejoUsuarios.Usuario;
+import com.example.ayprofes.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -57,7 +61,7 @@ public class RecoverActivity extends AppCompatActivity {
         txtvPregunta = findViewById(R.id.txtvPregunta);
         btnOk=findViewById(R.id.btnOK);
         toolbar=findViewById(R.id.toolbar);
-
+        //Manejo de evento al presionar el botón de verifiación de pregunta
         btnVerificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,38 +72,40 @@ public class RecoverActivity extends AppCompatActivity {
 
                 try
                 {
+                    //Obtiene los datos del usuario del cual se quiere recuperar la contraseña
                     db.collection("Usuarios").document(usuario).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                             nombreAux = documentSnapshot.getString("nombre");
                             preguntaAux = documentSnapshot.getString("pregunta");
                             respuestaAux = documentSnapshot.getString("respuesta");
+                            //Validacion de si existe el usuario indicado
                             if(nombreAux!=null) {
+                                //Cambio de vista
                                 txtvPregunta.setVisibility(View.VISIBLE);
                                 edtRespuestaContraseña.setVisibility(View.VISIBLE);
                                 edtNuevaContraseña.setVisibility(View.VISIBLE);
                                 btnNuevaContraseña.setVisibility(View.VISIBLE);
-
                                 edtRecuperarUsuario.setEnabled(false);
-
                                 btnVerificar.setVisibility(View.GONE);
-
                                 txtvPregunta.setText(preguntaAux);
 
+                                //Manejo de evento al presionar el botón de restablecer contraseña
                                 btnNuevaContraseña.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
 
                                         respuesta=edtRespuestaContraseña.getText().toString();
-
+                                        //Si la respuesta de verificación de usuario conincide con la escrita en la base
+                                        //de datos nodifica la contraseña del usuario por la nueva
                                         if(respuesta.equals(respuestaAux))
                                         {
                                             nuevaContraseña=edtNuevaContraseña.getText().toString();
-
                                             if (nuevaContraseña.length() < 9) {
                                                 Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastConstrasena10caracter), Toast.LENGTH_SHORT).show();
                                             }
                                             else {
+                                                //Si la nueva contraseñá cumple la validación se regresa la vista a la normalidad
                                                 Usuario miUsuario = new Usuario(usuario, nuevaContraseña, preguntaAux, respuestaAux);
                                                 db.collection("Usuarios").document(usuario).set(miUsuario).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
@@ -113,7 +119,7 @@ public class RecoverActivity extends AppCompatActivity {
                                                         btnOk.setOnClickListener(new View.OnClickListener() {
                                                             @Override
                                                             public void onClick(View v) {
-                                                                Intent in=new Intent(v.getContext(),LoginActivity.class);
+                                                                Intent in=new Intent(v.getContext(), LoginActivity.class);
                                                                 v.getContext().startActivity(in);
                                                             }
                                                         });
@@ -151,11 +157,10 @@ public class RecoverActivity extends AppCompatActivity {
 
             }
         });
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
-
+    //Métodos de creación de menu explicados previamente
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar,menu);
@@ -169,7 +174,7 @@ public class RecoverActivity extends AppCompatActivity {
 
         switch (id){
             case R.id.ab_home:
-                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                Intent in = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(in);
                 break;
             case R.id.ab_login:
@@ -180,6 +185,7 @@ public class RecoverActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    //Método explicado previamente
     public void ComprobarLinea(final Menu menu)
     {
         SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);

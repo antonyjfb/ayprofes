@@ -1,6 +1,5 @@
-package com.example.ayprofes;
+package com.example.ayprofes.ManejoUsuarios;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -21,6 +19,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.ayprofes.MainActivity;
+import com.example.ayprofes.ManejoUsuarios.LoginActivity;
+import com.example.ayprofes.ManejoUsuarios.Usuario;
+import com.example.ayprofes.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -163,24 +165,6 @@ public class SignUpActivity extends AppCompatActivity {
 
 
                                             Toast.makeText(getApplicationContext(), getResources().getString(R.string.toastAgregaronDatosCorrecto), Toast.LENGTH_SHORT).show();
-
-                                            //
-                                            //Codigo para conectarse
-                                            //
-
-                                            /*Usuario miLinea = new Usuario(usuario);
-                                            db.collection("Enlinea").document(usuario).set(miLinea).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastInicioSesion), Toast.LENGTH_SHORT).show();
-                                                }
-                                            }).addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-
-                                                }
-                                            });*/
-
                                             Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastInicioSesion), Toast.LENGTH_SHORT).show();
                                             SharedPreferences sharedPreferences = getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
                                             String usuarioShared=edtUsuario.getText().toString();
@@ -191,7 +175,7 @@ public class SignUpActivity extends AppCompatActivity {
                                             edtContraseña.setText("");
                                             edtContraseña2.setText("");
                                             edtRespuesta.setText("");
-                                            Intent in = new Intent(getApplicationContext(),LoginActivity.class);
+                                            Intent in = new Intent(getApplicationContext(), LoginActivity.class);
                                             startActivity(in);
 
 
@@ -216,11 +200,6 @@ public class SignUpActivity extends AppCompatActivity {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastIngresoNada), Toast.LENGTH_SHORT).show();
                 }
-
-
-                //Intent para registrar
-                // Intent in = new Intent(getApplicationContext(),BuscarActivity.class);
-                // startActivity(in);
             }
         });
 
@@ -228,6 +207,7 @@ public class SignUpActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
+    //Métodos de creación del menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar,menu);
@@ -240,7 +220,7 @@ public class SignUpActivity extends AppCompatActivity {
         int id=item.getItemId();
         switch (id){
             case R.id.ab_home:
-                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                Intent in = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(in);
                 break;
             case R.id.ab_login:
@@ -251,6 +231,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    //Método descrito anteriormente
     public void ComprobarLinea(final Menu menu)
     {
         SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);

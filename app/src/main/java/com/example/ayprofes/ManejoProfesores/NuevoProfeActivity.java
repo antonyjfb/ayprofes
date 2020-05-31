@@ -1,26 +1,24 @@
-package com.example.ayprofes;
+package com.example.ayprofes.ManejoProfesores;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.ayprofes.MainActivity;
+import com.example.ayprofes.ManejoUsuarios.LoginActivity;
+import com.example.ayprofes.R;
 import com.example.ayprofes.RecyclerViews.MuestraProfesor;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -32,9 +30,6 @@ public class NuevoProfeActivity extends AppCompatActivity {
     MuestraProfesor profe;
     private Toolbar toolbar;
 
-    //Antony se la come
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +40,12 @@ public class NuevoProfeActivity extends AppCompatActivity {
         toolbar=findViewById(R.id.toolbar);
 
         Button submitButton = (Button) findViewById(R.id.btnEnviarComentario);
-        // perform click event on button
+        // Evento del botón enviar profesor
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // get values and then displayed in a toast
+
+                //Obtiene los valores de los edit text de nombre y materia del profesor a agregar y los añade a la base de datos si pasan la validación
                 db = FirebaseFirestore.getInstance();
                 profe = new MuestraProfesor(cuadroNombre.getText().toString(),cuadroMateria.getText().toString());
                 Map<String, Object> filler = new HashMap<>();
@@ -57,7 +53,7 @@ public class NuevoProfeActivity extends AppCompatActivity {
                     filler.put("nombre", profe.getNombre());
                     filler.put("materia", profe.getMateria());
                     db.collection("Profesores").document(profe.getNombre()).set(filler);
-                    Intent in=new Intent(v.getContext(),ComentarioActivity.class);
+                    Intent in=new Intent(v.getContext(), ComentarioActivity.class);
                     in.putExtra("nombreProfe", profe.getNombre());
                     v.getContext().startActivity(in);
                 }
@@ -71,7 +67,7 @@ public class NuevoProfeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
-
+    //Métodos siguientes comentados previamente
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar,menu);
@@ -85,11 +81,11 @@ public class NuevoProfeActivity extends AppCompatActivity {
 
         switch (id){
             case R.id.ab_home:
-                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                Intent in = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(in);
                 break;
             case R.id.ab_login:
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 break;
 

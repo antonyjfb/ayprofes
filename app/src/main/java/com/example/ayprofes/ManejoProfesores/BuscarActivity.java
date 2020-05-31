@@ -1,4 +1,4 @@
-package com.example.ayprofes;
+package com.example.ayprofes.ManejoProfesores;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ayprofes.MainActivity;
+import com.example.ayprofes.ManejoUsuarios.LoginActivity;
+import com.example.ayprofes.R;
 import com.example.ayprofes.RecyclerViews.AdaptadorMuestraProfesor;
 import com.example.ayprofes.RecyclerViews.MuestraProfesor;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -30,7 +33,6 @@ public class BuscarActivity extends AppCompatActivity {
     FirebaseFirestore db;
     AdaptadorMuestraProfesor adaptador;
     SearchView buscador;
-    DatabaseReference databaseReference;
     private Toolbar toolbar;
     ArrayList<MuestraProfesor> arrayList;
 
@@ -44,33 +46,9 @@ public class BuscarActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rcvBuscarProfesor.setLayoutManager(llm);
         db=FirebaseFirestore.getInstance();
-        toolbar=findViewById(R.id.toolbar);/*
-        try {
-            db.collection("Profesores").get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-
-
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                }
-                            } else {
-                                Log.w("Hola", "Error getting documents.", task.getException());
-                            }
-                        }
-                    });
-        }catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Ha ocurrido un error, intente de nuevo", Toast.LENGTH_SHORT).show();
-        }*/
-        //Adaptador para el spiner
-
+        toolbar=findViewById(R.id.toolbar);
         buscador=findViewById(R.id.searchView);
-
         arrayList = new ArrayList<>();
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -81,6 +59,7 @@ public class BuscarActivity extends AppCompatActivity {
         adaptador.notifyDataSetChanged();
         rcvBuscarProfesor.setAdapter(adaptador);
 
+        //Método que maneja la searchView
         buscador.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -89,6 +68,7 @@ public class BuscarActivity extends AppCompatActivity {
                 buscador.setIconified(true);
                 return true;
             }
+            //Al escribir en el campo de búsqueda se busca en las cardview con base a ello
             @Override
             public boolean onQueryTextChange(String newText) {
                 //do this
@@ -104,11 +84,10 @@ public class BuscarActivity extends AppCompatActivity {
             }
             });
     }
-
+    //Método de actualización de query con base al texto de búsqueda
     private void search(String newText) {
         Log.d("Search", newText);
         adaptador.stopListening();
-        //Query query = db.collection("Profesores").whereEqualTo("nombre", newText);   // Si se quiere el nombre exacto
         Query query = db.collection("Profesores").whereGreaterThanOrEqualTo("nombre", newText);  //Si se quiere similar
         FirestoreRecyclerOptions<MuestraProfesor> firestoreRecyclerOptions=new FirestoreRecyclerOptions.Builder<MuestraProfesor>().setQuery(query,MuestraProfesor.class).build();
         adaptador=new AdaptadorMuestraProfesor(firestoreRecyclerOptions);
@@ -117,7 +96,7 @@ public class BuscarActivity extends AppCompatActivity {
         adaptador.startListening();
     }
 
-
+    //Método del recycleView
     @Override
     protected void onStart() {
         super.onStart();
@@ -130,6 +109,7 @@ public class BuscarActivity extends AppCompatActivity {
         adaptador.stopListening();
     }
 
+    //Métodos de creación de menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar,menu);
@@ -143,17 +123,18 @@ public class BuscarActivity extends AppCompatActivity {
 
         switch (id){
             case R.id.ab_home:
-                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                Intent in = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(in);
                 break;
             case R.id.ab_login:
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 break;
 
         }
         return super.onOptionsItemSelected(item);
     }
+    //Método descrito anteriormente
     public void ComprobarLinea(final Menu menu)
     {
         SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);

@@ -3,6 +3,7 @@ package com.example.ayprofes.RecyclerViews;
 public class MuestraComentario {
 
     private String comentario;
+    //Clase de comentarios de texto plano
 
     public MuestraComentario(){}
 

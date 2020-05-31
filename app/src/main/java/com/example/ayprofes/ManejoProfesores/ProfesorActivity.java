@@ -1,4 +1,4 @@
-package com.example.ayprofes;
+package com.example.ayprofes.ManejoProfesores;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +19,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ayprofes.MainActivity;
+import com.example.ayprofes.ManejoProfesores.BuscarActivity;
+import com.example.ayprofes.ManejoProfesores.ComentarioActivity;
+import com.example.ayprofes.ManejoUsuarios.LoginActivity;
+import com.example.ayprofes.R;
 import com.example.ayprofes.RecyclerViews.AdaptadorMuestraComentario;
 import com.example.ayprofes.RecyclerViews.MuestraComentario;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -33,8 +38,6 @@ public class ProfesorActivity extends AppCompatActivity {
 
     RecyclerView rcvComentario;
     AdaptadorMuestraComentario adaptador;
-
-    String usuarioAux;
 
     TextView txtvCarga, txtvRecomendacion, txtvAyuda, txtvClaridad, txtvNombre, txtvProfesor,txtvFacilidad, txtvCargaCalif, txtvAyudaCalif, txtvClaridadCalif, txtvFacilidadCalif;
     Button btnAñadir;
@@ -78,6 +81,7 @@ public class ProfesorActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
+
     try {
     db.collection("Profesores").document(nombreProfe).collection("Comentarios")
             .get()
@@ -98,6 +102,8 @@ public class ProfesorActivity extends AppCompatActivity {
                         float resultadoRecomendacion = 0;
                         double calificacionaux;
 
+                        //Obtiene los comentarios del profesor seleccionado por el usuario y de ahí hace iteraciones
+                        //para calcular el promedio de cada atributo
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             ayudaAux = Float.parseFloat(document.getData().get("ayuda").toString());
                             cargaAux = Float.parseFloat(document.getData().get("carga").toString());
@@ -118,8 +124,9 @@ public class ProfesorActivity extends AppCompatActivity {
                         resultadoRecomendacion = resultadoRecomendacion / i;
                         resultadoFacilidad = resultadoFacilidad / i;
                         calificacionaux=(resultadoAyuda+resultadoClaridad+resultadoFacilidad+resultadoRecomendacion)/2;
-                        String calificacion=String.format("%.2f",calificacionaux);
 
+                        //Conversión de promedios a dato tipo string para su visualización
+                        String calificacion=String.format("%.2f",calificacionaux);
                         String resultadoAyudaString, resultadoCargaString, resultadoClaridadString, resultadoFacilidadString;
                         resultadoAyudaString=String.format("%.1f",resultadoAyuda);
                         resultadoCargaString=String.format("%.1f",resultadoCarga);
@@ -128,23 +135,20 @@ public class ProfesorActivity extends AppCompatActivity {
 
                         db.collection("Profesores").document(nombreProfe).update("calificacion",Double.parseDouble(calificacion));
 
-                        /*ayudaRatingBarProfe.setRating(resultadoAyuda);
-                        cargaRatingBarProfe.setRating(resultadoCarga);
-                        claridadRatingBarProfe.setRating(resultadoClaridad);
-                        recomendacionRatingBarProfe.setRating(resultadoRecomendacion);
-                        facilidadRatingBarProfe.setRating(resultadoFacilidad);*/
-
+                        //Manejo de ratingBar
                         ayudaRatingBarProfe.setRating(5);
                         cargaRatingBarProfe.setRating(5);
                         claridadRatingBarProfe.setRating(5);
-                        recomendacionRatingBarProfe.setRating(resultadoRecomendacion);
                         facilidadRatingBarProfe.setRating(5);
+                        recomendacionRatingBarProfe.setRating(resultadoRecomendacion);
 
+                        //Despliegue de calificaciones
                         txtvAyudaCalif.setText(resultadoAyudaString);
                         txtvCargaCalif.setText(resultadoCargaString);
                         txtvClaridadCalif.setText(resultadoClaridadString);
                         txtvFacilidadCalif.setText(resultadoFacilidadString);
 
+                        //Impide al usuario modificar las ratingBars
                         ayudaRatingBarProfe.setEnabled(false);
                         cargaRatingBarProfe.setEnabled(false);
                         facilidadRatingBarProfe.setEnabled(false);
@@ -158,65 +162,26 @@ public class ProfesorActivity extends AppCompatActivity {
             });
     } catch (Exception e) {
         e.printStackTrace();
+        //Manejo de error si no se puede conectar a la base de datos
         Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastHaOcurridoError), Toast.LENGTH_SHORT).show();
     }
 
+        //Creación de recycle view a partir de una query de la base de datos
         Query query=db.collection("Profesores").document(nombreProfe).collection("Comentarios");
         FirestoreRecyclerOptions<MuestraComentario> firestoreRecyclerOptions=new FirestoreRecyclerOptions.Builder<MuestraComentario>().setQuery(query,MuestraComentario.class).build();
         adaptador=new AdaptadorMuestraComentario(firestoreRecyclerOptions);
         adaptador.notifyDataSetChanged();
-
         rcvComentario.setAdapter(adaptador);
 
+        //Evento para añadir comentario
         btnAñadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //
-                //NO BORREN LO QUE ESTA COMENTADO PORQUE LO VAMOS A USAR PARA VALIDAR QUE EL USUARIO A INICIADO SESION
-                //SOLO LO COMENTO PARA SEGUIR REALIZANDO PRUEBAS
-                //
-
                 db = FirebaseFirestore.getInstance();
-
-                /*try {
-                    db.collection("Enlinea")
-                            .get()
-                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                    if (task.isSuccessful()) {
-
-                                        for (QueryDocumentSnapshot document : task.getResult()) {
-                                            usuarioAux =document.getData().get("nombre").toString();
-
-                                            Log.d("Prueba",usuarioAux);
-                                        }
-
-                                        if(usuarioAux==null) {
-                                            Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastRequiereSesionComentar), Toast.LENGTH_SHORT).show();
-                                        }
-                                        else
-                                        {
-                                            Intent in = new Intent(getApplicationContext(), ComentarioActivity.class);
-                                            Bundle bundle = getIntent().getExtras();
-                                            String nombreProfe = bundle.getString("nombreProfe");
-                                            Log.d("Transito", nombreProfe);
-                                            in.putExtra("nombreProfe", nombreProfe);
-                                            startActivity(in);
-                                        }
-
-                                    } else {
-                                        Log.w("Hola", "Error getting documents.", task.getException());
-                                    }
-                                }
-                            });
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastHaOcurridoError), Toast.LENGTH_SHORT).show();
-                }*/
                 SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
                 String usuarioShared=sharedPreferences.getString("Usuario","No hay info");
+
+                //Si no existe una sesión iniciada no permite añadir un comentario del profesor
                 if(usuarioShared=="No hay info") {
                     Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastRequiereSesionComentar), Toast.LENGTH_SHORT).show();
                 }
@@ -231,11 +196,11 @@ public class ProfesorActivity extends AppCompatActivity {
                 }
             }
         });
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
+    //Nétodos para el recycle view
     @Override
     protected void onStart() {
         super.onStart();
@@ -248,6 +213,7 @@ public class ProfesorActivity extends AppCompatActivity {
         adaptador.stopListening();
     }
 
+    //Métodos del menu descritos previamente
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar,menu);
@@ -261,11 +227,11 @@ public class ProfesorActivity extends AppCompatActivity {
 
         switch (id){
             case R.id.ab_home:
-                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                Intent in = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(in);
                 break;
             case R.id.ab_login:
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 break;
 
@@ -273,16 +239,15 @@ public class ProfesorActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Manejo del evento al presionar back, te manda a la vista anterior a esta
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
         Intent in = new Intent(getApplicationContext(), BuscarActivity.class);
-        Bundle miBundle=new Bundle();
-        miBundle.putString("nombreProfe",txtvProfesor.getText().toString());
-        in.putExtras(miBundle);
         startActivity(in);
     }
+
+    //Funcion explicada anteriormente
     public void ComprobarLinea(final Menu menu)
     {
         SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);

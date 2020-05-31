@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/ic_fondo"
-    tools:context=".ProfesorActivity">
+    tools:context=".ManejoProfesores.ProfesorActivity">
 
     <include layout="@layout/appbar" />
 

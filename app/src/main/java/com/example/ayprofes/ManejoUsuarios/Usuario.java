@@ -1,4 +1,4 @@
-package com.example.ayprofes;
+package com.example.ayprofes.ManejoUsuarios;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -12,6 +12,7 @@ public class Usuario {
     private String pregunta;
     private String respuesta;
 
+    //Clase del usuario con los atributos que utiliza
     public Usuario(String nombre, String contraseña, String pregunta, String respuesta) {
         this.nombre = nombre;
         this.contraseña = contraseña;

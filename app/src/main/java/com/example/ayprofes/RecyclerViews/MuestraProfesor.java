@@ -78,6 +78,7 @@ public class MuestraProfesor {
     }
 
 
+    //Clase de profesor con los atributos deseados para un profesor
     public MuestraProfesor(String comentario, float claridad, float facilidad, float ayuda, float carga, float recomendacion) {
         this.claridad = claridad;
         this.facilidad = facilidad;
@@ -100,9 +101,7 @@ public class MuestraProfesor {
         this.materia = materia;
         this.calificacion = calificacion;
     }
-
-    public MuestraProfesor(){
-
+    public MuestraProfesor() {
     }
 
 

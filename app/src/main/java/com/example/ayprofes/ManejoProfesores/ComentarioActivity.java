@@ -1,4 +1,4 @@
- package com.example.ayprofes;
+ package com.example.ayprofes.ManejoProfesores;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.ayprofes.MainActivity;
+import com.example.ayprofes.ManejoUsuarios.LoginActivity;
+import com.example.ayprofes.R;
 import com.example.ayprofes.RecyclerViews.MuestraProfesor;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,14 +36,10 @@ public class ComentarioActivity extends AppCompatActivity {
     TextView txtvProfesor;
     private Toolbar toolbar;
 
-    //Antony se la come
-    //x2
-    //x3
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comentario); //activity main
+        setContentView(R.layout.activity_comentario);
         toolbar=findViewById(R.id.toolbar);
         final RatingBar facilidadRatingBar, claridadRatingBar, ayudaRatingBar, workloadRatingBar, recommendationRatingBar;
         final EditText comentarioBox;
@@ -56,11 +55,11 @@ public class ComentarioActivity extends AppCompatActivity {
         txtvProfesor = findViewById(R.id.txtvProfesor);
         final String nombreProfe = bundle.getString("nombreProfe");
         nombreDelProfesor.setText(nombreProfe);
-        // perform click event on button
+        // botón de agregar el comentario
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // get values and then displayed in a toast
+                //Obtiene los valores de las ratingBars y el comentario escrito y añade las cosas como un comentario a la base de datos
                 db = FirebaseFirestore.getInstance();
                 profe = new MuestraProfesor(comentarioBox.getText().toString(),claridadRatingBar.getRating(),facilidadRatingBar.getRating(),ayudaRatingBar.getRating(),workloadRatingBar.getRating(),recommendationRatingBar.getRating());
                 String direccion = nombreProfe;
@@ -70,7 +69,8 @@ public class ComentarioActivity extends AppCompatActivity {
                         public void onSuccess(DocumentReference documentReference) {
                             Log.d("Firebase", "DocumentSnapshot written with ID: " + documentReference.getId());
                             Toast.makeText(getApplicationContext(), "Se ha añadido el comentario correctamente", Toast.LENGTH_SHORT).show();
-                            Intent in = new Intent(ComentarioActivity.this,ProfesorActivity.class);
+                            //Una vez agregado el comentario te regresa a la vista del profesor
+                            Intent in = new Intent(ComentarioActivity.this, ProfesorActivity.class);
                             Bundle miBundle=new Bundle();
                             miBundle.putString("nombreProfe",txtvProfesor.getText().toString());
                             in.putExtras(miBundle);
@@ -91,6 +91,7 @@ public class ComentarioActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
+    //Métodos de creación del menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar,menu);
@@ -104,17 +105,19 @@ public class ComentarioActivity extends AppCompatActivity {
 
         switch (id){
             case R.id.ab_home:
-                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                Intent in = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(in);
                 break;
             case R.id.ab_login:
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 break;
 
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //Método descrito anteriormente
     public void ComprobarLinea(final Menu menu)
     {
         SharedPreferences sharedPreferences=getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
