@@ -53,12 +53,18 @@ public class NuevoProfeActivity extends AppCompatActivity {
                 db = FirebaseFirestore.getInstance();
                 profe = new MuestraProfesor(cuadroNombre.getText().toString(),cuadroMateria.getText().toString());
                 Map<String, Object> filler = new HashMap<>();
-                filler.put("nombre", profe.getNombre());
-                filler.put("materia", profe.getMateria());
-                db.collection("Profesores").document(profe.getNombre()).set(filler);
-                Intent in=new Intent(v.getContext(),ComentarioActivity.class);
-                in.putExtra("nombreProfe", profe.getNombre());
-                v.getContext().startActivity(in);
+                if(profe.getNombre().length()>3&&profe.getMateria().length()>3){
+                    filler.put("nombre", profe.getNombre());
+                    filler.put("materia", profe.getMateria());
+                    db.collection("Profesores").document(profe.getNombre()).set(filler);
+                    Intent in=new Intent(v.getContext(),ComentarioActivity.class);
+                    in.putExtra("nombreProfe", profe.getNombre());
+                    v.getContext().startActivity(in);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastIngresoNada), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
